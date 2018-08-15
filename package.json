@@ -1,0 +1,25 @@
+{
+    "name": "trello-clone",
+    "version": "1.0.0",
+    "description": "Track projects and tasks",
+    "main": "index.js",
+    "scripts": {
+        "posttest": "eslint --ignore-path .gitignore ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/amelendez37/trello-clone.git"
+    },
+    "author": "Aaron Melendez",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/amelendez37/trello-clone/issues"
+    },
+    "homepage": "https://github.com/amelendez37/trello-clone#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "eslint": "^5.3.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-plugin-import": "^2.14.0"
+    }
+}
