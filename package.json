@@ -4,6 +4,7 @@
     "description": "Track projects and tasks",
     "main": "index.js",
     "scripts": {
+        "start:server": "cd server && nodemon",
         "posttest": "eslint --ignore-path .gitignore ."
     },
     "repository": {
