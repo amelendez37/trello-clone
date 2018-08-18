@@ -4,7 +4,7 @@
     "description": "Track projects and tasks",
     "main": "index.js",
     "scripts": {
-        "start:server": "cd server && nodemon",
+        "start:server": "nodemon",
         "posttest": "eslint --ignore-path .gitignore ."
     },
     "repository": {
@@ -17,10 +17,16 @@
         "url": "https://github.com/amelendez37/trello-clone/issues"
     },
     "homepage": "https://github.com/amelendez37/trello-clone#readme",
-    "dependencies": {},
+    "dependencies": {
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3",
+        "mongoose": "^5.2.9",
+        "winston": "^3.0.0"
+    },
     "devDependencies": {
         "eslint": "^5.3.0",
         "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-plugin-import": "^2.14.0"
+        "eslint-plugin-import": "^2.14.0",
+        "nodemon": "^1.18.3"
     }
 }
