@@ -7,15 +7,16 @@ const config = require('./config/config');
 const { mongoUrl } = require('./config/config');
 const logger = require('./config/logger');
 
-// only board model needed due to embedded schema
-require('./components/board/boardModel');
+require('./models/boardModel');
+require('./models/listModel');
+require('./models/listItemModel');
 
-mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrl, { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
-db.on('error', logger.error('Error connecting to mongoDB'));
-db.once('open', logger.info('Successfully connected to mongoDB'));
+db.on('error', () => logger.error('Error connecting to mongoDB'));
+db.once('open', () => logger.info('Successfully connected to mongoDB'));
 
 const app = express();
 const port = config.serverPort || 3000;

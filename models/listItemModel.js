@@ -6,4 +6,5 @@ const ListItemSchema = new Schema({
   text: { type: String },
 });
 
-module.exports = ListItemSchema;
+// module.exports = ListItemSchema;
+mongoose.model('ListItem', ListItemSchema);

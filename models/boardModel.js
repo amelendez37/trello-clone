@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const ListSchema = require('../list/listModel');
+const ListSchema = require('./listModel');
 
-const { Schema, model } = mongoose;
+const { Schema } = mongoose;
 
 const BoardSchema = new Schema({
   name: { type: String },
   lists: [ListSchema],
 });
 
-model('Board', BoardSchema);
+mongoose.model('Board', BoardSchema);

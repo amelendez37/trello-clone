@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ListItemSchema = require('../board/boardModel');
+const ListItemSchema = require('./listItemModel');
 
 const { Schema } = mongoose;
 
@@ -8,4 +8,5 @@ const ListSchema = new Schema({
   listItems: [ListItemSchema],
 });
 
-module.exports = ListSchema;
+// module.exports = ListSchema;
+mongoose.model('List', ListSchema);
