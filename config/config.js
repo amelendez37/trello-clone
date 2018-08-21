@@ -13,6 +13,8 @@ const config = {
   env: process.env.NODE_ENV,
   serverPort: Number(process.env.PORT),
   mongoUrl: process.env.MONGO_URL,
+  baseUrl: process.env.NODE_ENV !== 'production'
+    ? `http://localhost:${process.env.PORT}` : process.env.BASE_URL,
 };
 
 module.exports = config;

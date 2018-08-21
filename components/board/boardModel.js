@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ListSchema = require('./listModel');
+const ListSchema = require('../list/listModel');
 
 const { Schema } = mongoose;
 

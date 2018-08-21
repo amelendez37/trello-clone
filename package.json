@@ -4,7 +4,7 @@
     "description": "Track projects and tasks",
     "main": "index.js",
     "scripts": {
-        "start:server": "nodemon",
+        "start:server": "nodemon index.js",
         "posttest": "eslint --ignore-path .gitignore ."
     },
     "repository": {
