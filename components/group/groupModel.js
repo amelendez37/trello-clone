@@ -9,3 +9,5 @@ const GroupSchema = new Schema({
 });
 
 mongoose.model('Group', GroupSchema);
+
+module.exports = GroupSchema;

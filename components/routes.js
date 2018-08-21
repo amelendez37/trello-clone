@@ -1,19 +1,23 @@
 const router = require('express').Router();
+const { groupController, addGroupController } = require('./group/groupControllers');
 const {
-  addGroupController,
-  groupController,
-} = require('./group/groupControllers');
+  addBoardController,
+  deleteBoardController,
+} = require('./board/boardControllers');
 
-// router.get('/board', boardController);
-// router.post('/board', boardController);
-
-// router.get('/list', listController);
-// router.post('/list', listController);
-
-// router.get('/listItem', listItemController);
-// router.post('/listItem', listItemController);
+router.post('/board', addBoardController);
+router.delete('/board', deleteBoardController);
+// router.patch('/board', editBoardController);
 
 router.get('/group/:groupname', groupController);
 router.post('/group', addGroupController);
+
+// router.post('/list', listController);
+// router.delete('/list', listController);
+// router.patch('/list', listController);
+
+// router.post('/listItem', listItemController);
+// router.delete('/listItem', listItemController);
+// router.patch('/listItem', listItemController);
 
 module.exports = router;

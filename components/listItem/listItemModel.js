@@ -4,7 +4,9 @@ const { Schema } = mongoose;
 
 const ListItemSchema = new Schema({
   text: { type: String },
+  completed: { type: Boolean },
 });
 
-// module.exports = ListItemSchema;
 mongoose.model('ListItem', ListItemSchema);
+
+module.exports = ListItemSchema;
