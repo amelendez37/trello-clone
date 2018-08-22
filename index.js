@@ -12,7 +12,7 @@ require('./components/board/boardModel');
 require('./components/list/listModel');
 require('./components/listItem/listItemModel');
 require('./components/group/groupModel');
-const routes = require('./components/routes.js');
+const routes = require('./components');
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true });
 
