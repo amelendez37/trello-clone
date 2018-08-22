@@ -4,7 +4,7 @@ const ListItemSchema = require('../listItem/listItemModel');
 const { Schema } = mongoose;
 
 const ListSchema = new Schema({
-  name: { type: String },
+  listName: { type: String },
   listItems: [ListItemSchema],
 });
 

@@ -6,20 +6,21 @@ const Group = mongoose.model('Group');
 /**
  * Finds a group
  * @param groupname - String
- * @returns - query data or false
+ * @returns - Group object or false
  */
 const findGroupQuery = async (groupname) => {
   try {
-    const result = await Group.find({ groupname });
+    const group = await Group.findOne({ groupname });
 
-    if (result.length) {
-      return result;
+    if (group) {
+      return group;
     }
+
+    return false;
   } catch (err) {
     logger.error(`Error in findGroupQuery ${err}`);
+    throw err;
   }
-
-  return false;
 };
 
 /**
@@ -29,19 +30,19 @@ const findGroupQuery = async (groupname) => {
  */
 const addGroupQuery = async (groupName) => {
   try {
-    const result = await Group.find({ groupName });
+    const group = await Group.findOne({ groupName });
 
-    if (result.length) {
+    if (group) {
       return false;
     }
 
-    const group = new Group({ groupName });
-    await group.save();
+    const newGroup = new Group({ groupName });
+    await newGroup.save();
+    return true;
   } catch (err) {
     logger.error(`Error in addGroupQuery - ${err}`);
+    throw err;
   }
-
-  return true;
 };
 
 module.exports = {
