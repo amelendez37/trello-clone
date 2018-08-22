@@ -3,11 +3,12 @@ const { groupController, addGroupController } = require('./group/groupController
 const {
   addBoardController,
   deleteBoardController,
+  editBoardController,
 } = require('./board/boardControllers');
 
 router.post('/board', addBoardController);
 router.delete('/board', deleteBoardController);
-// router.patch('/board', editBoardController);
+router.patch('/board', editBoardController);
 
 router.get('/group/:groupname', groupController);
 router.post('/group', addGroupController);

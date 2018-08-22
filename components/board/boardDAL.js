@@ -24,7 +24,19 @@ const deleteBoardQuery = async (groupName, boardId) => {
   }
 };
 
+const editBoardQuery = async (groupName, boardId, newBoardName) => {
+  try {
+    const group = await Group.findOne({ groupName });
+    const board = group.boards.id(boardId);
+    board.boardName = newBoardName;
+    await group.save();
+  } catch (err) {
+    logger.error(`Error in editBoardQuery - ${err}`);
+  }
+};
+
 module.exports = {
   addBoardQuery,
   deleteBoardQuery,
+  editBoardQuery,
 };
