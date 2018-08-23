@@ -4,6 +4,6 @@ const router = require('express').Router();
 require('./board/boardRoutes')(router);
 require('./group/groupRoutes')(router);
 require('./list/listRoutes')(router);
-require('./listItem/listItemRoutes')(router);
+// require('./listItem/listItemRoutes')(router);
 
 module.exports = router;

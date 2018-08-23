@@ -4,9 +4,6 @@ const {
   findGroupQuery,
 } = require('./groupDAL');
 
-/**
- * Gets data associated with a group
- */
 const groupController = async (req, res) => {
   const { groupName } = req.params;
 
@@ -24,10 +21,6 @@ const groupController = async (req, res) => {
   }
 };
 
-/**
- * Validates groupName input and performs
- * query operation for adding a new group
- */
 const addGroupController = async (req, res) => {
   const { groupName } = req.body;
 

@@ -4,7 +4,7 @@ const logger = require('../../config/logger');
 const Group = mongoose.model('Group');
 const Board = mongoose.model('Board');
 
-const addBoardQuery = async (boardName, groupName) => {
+const addBoardQuery = async (groupName, boardName) => {
   try {
     const group = await Group.findOne({ groupName });
     group.boards.push(new Board({ boardName }));
