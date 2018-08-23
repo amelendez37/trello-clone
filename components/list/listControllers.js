@@ -1,6 +1,7 @@
 const logger = require('../../config/logger');
 const {
   addListQuery,
+  deleteListQuery,
 } = require('./listDAL');
 
 const addListController = async (req, res) => {
@@ -15,6 +16,19 @@ const addListController = async (req, res) => {
   }
 };
 
+const deleteListController = async (req, res) => {
+  const { groupName, boardId, listId } = req.body;
+
+  try {
+    await deleteListQuery(groupName, boardId, listId);
+    res.status(200).send();
+  } catch (err) {
+    logger.error(`Error in deleteListController ${err}`);
+    res.status(404).send();
+  }
+};
+
 module.exports = {
   addListController,
+  deleteListController,
 };
