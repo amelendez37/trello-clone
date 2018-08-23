@@ -1,4 +1,4 @@
-const logger = require('../../config/logger');
+const controllerHelper = require('../../helpers/controllerHelper');
 const {
   addListQuery,
   deleteListQuery,
@@ -8,25 +8,29 @@ const {
 const addListController = async (req, res) => {
   const { groupName, boardId, listName } = req.body;
 
-  try {
-    await addListQuery(groupName, boardId, listName);
-    return res.status(201).send();
-  } catch (err) {
-    logger.error(`Error in addListController - ${err}`);
-    return res.status(404).send();
-  }
+  controllerHelper(
+    res,
+    addListQuery,
+    201,
+    'Error in addListController',
+    groupName,
+    boardId,
+    listName,
+  );
 };
 
 const deleteListController = async (req, res) => {
   const { groupName, boardId, listId } = req.body;
 
-  try {
-    await deleteListQuery(groupName, boardId, listId);
-    res.status(200).send();
-  } catch (err) {
-    logger.error(`Error in deleteListController ${err}`);
-    res.status(404).send();
-  }
+  controllerHelper(
+    res,
+    deleteListQuery,
+    200,
+    'Error in deleteListController',
+    groupName,
+    boardId,
+    listId,
+  );
 };
 
 const editListController = async (req, res) => {
@@ -37,13 +41,16 @@ const editListController = async (req, res) => {
     newListName,
   } = req.body;
 
-  try {
-    await editListQuery(groupName, boardId, listId, newListName);
-    res.status(200).send();
-  } catch (err) {
-    logger.error(`Error in editListController ${err}`);
-    res.status(404).send();
-  }
+  controllerHelper(
+    res,
+    editListQuery,
+    200,
+    'Error in editListController',
+    groupName,
+    boardId,
+    listId,
+    newListName,
+  );
 };
 
 module.exports = {

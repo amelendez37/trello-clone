@@ -1,7 +1,11 @@
-// const { addListItemController } = require('./listItemControllers');
+const {
+  addListItemController,
+  deleteListItemController,
+  editListItemController,
+} = require('./listItemControllers');
 
-// module.exports = (router) => {
-//   router.post('/listItem', addListItemController);
-//   // router.delete('/listItem', listItemController);
-//   // router.patch('/listItem', listItemController);
-// };
+module.exports = (router) => {
+  router.post('/listItem', addListItemController);
+  router.delete('/listItem', deleteListItemController);
+  router.patch('/listItem', editListItemController);
+};

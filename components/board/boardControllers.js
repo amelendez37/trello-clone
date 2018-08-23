@@ -1,33 +1,14 @@
-const logger = require('../../config/logger');
+const controllerHelper = require('../../helpers/controllerHelper');
 const {
   addBoardQuery,
   deleteBoardQuery,
   editBoardQuery,
 } = require('./boardDAL');
 
-/**
- * Helper for board controllers
- *
- * @param res - response object
- * @param query - query to be executed
- * @param statusCode - Integer - http status code to be sent on success
- * @param errStr - String - to be used on error logging
- * @param args - Additional arguments will be passed to the query
- */
-const boardContHelper = async function boardContHelper(res, query, statusCode, errStr, ...args) {
-  try {
-    await query(...args);
-    return res.status(statusCode).send();
-  } catch (err) {
-    logger.error(`${errStr} - ${err}`);
-    return res.status(404).send();
-  }
-};
-
 const addBoardController = (req, res) => {
   const { boardName, groupName } = req.body;
 
-  boardContHelper(
+  controllerHelper(
     res,
     addBoardQuery,
     201,
@@ -40,7 +21,7 @@ const addBoardController = (req, res) => {
 const deleteBoardController = async (req, res) => {
   const { groupName, boardId } = req.body;
 
-  boardContHelper(
+  controllerHelper(
     res,
     deleteBoardQuery,
     200,
@@ -53,7 +34,7 @@ const deleteBoardController = async (req, res) => {
 const editBoardController = async (req, res) => {
   const { groupName, boardId, newBoardName } = req.body;
 
-  boardContHelper(
+  controllerHelper(
     res,
     editBoardQuery,
     200,

@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const ListItemSchema = new Schema({
   text: { type: String },
-  completed: { type: Boolean },
+  completed: { type: Boolean, default: false },
 });
 
 mongoose.model('ListItem', ListItemSchema);
