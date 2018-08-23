@@ -8,7 +8,6 @@ const ListSchema = new Schema({
   listItems: [ListItemSchema],
 });
 
-// module.exports = ListSchema;
 mongoose.model('List', ListSchema);
 
 module.exports = ListSchema;

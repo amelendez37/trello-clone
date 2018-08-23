@@ -29,7 +29,21 @@ const deleteListQuery = async (groupName, boardId, listId) => {
   }
 };
 
+const editListQuery = async (groupName, boardId, listId, newListName) => {
+  try {
+    const group = await Group.findOne({ groupName });
+    const board = group.boards.id(boardId);
+    const list = board.lists.id(listId);
+    list.listName = newListName;
+    await group.save();
+  } catch (err) {
+    logger.error(`Error in editListQuery - ${err}`);
+    throw err;
+  }
+};
+
 module.exports = {
   addListQuery,
   deleteListQuery,
+  editListQuery,
 };

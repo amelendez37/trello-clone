@@ -2,6 +2,7 @@ const logger = require('../../config/logger');
 const {
   addListQuery,
   deleteListQuery,
+  editListQuery,
 } = require('./listDAL');
 
 const addListController = async (req, res) => {
@@ -28,7 +29,25 @@ const deleteListController = async (req, res) => {
   }
 };
 
+const editListController = async (req, res) => {
+  const {
+    groupName,
+    boardId,
+    listId,
+    newListName,
+  } = req.body;
+
+  try {
+    await editListQuery(groupName, boardId, listId, newListName);
+    res.status(200).send();
+  } catch (err) {
+    logger.error(`Error in editListController ${err}`);
+    res.status(404).send();
+  }
+};
+
 module.exports = {
   addListController,
   deleteListController,
+  editListController,
 };
