@@ -7,13 +7,8 @@ const Board = mongoose.model('Board');
 const addBoardQuery = async (boardName, groupName) => {
   try {
     const group = await Group.findOne({ groupName });
-
-    if (group) {
-      group.boards.push(new Board({ boardName }));
-      await group.save();
-    } else {
-      throw new Error('Group not found');
-    }
+    group.boards.push(new Board({ boardName }));
+    await group.save();
   } catch (err) {
     logger.error(`Error in addBoardQuery - ${err}`);
     throw err;
@@ -23,19 +18,9 @@ const addBoardQuery = async (boardName, groupName) => {
 const deleteBoardQuery = async (groupName, boardId) => {
   try {
     const group = await Group.findOne({ groupName });
-
-    if (group) {
-      const board = group.boards.id(boardId);
-
-      if (board) {
-        board.remove();
-        await group.save();
-      } else {
-        throw new Error('Board not found');
-      }
-    } else {
-      throw new Error('Group not found');
-    }
+    const board = group.boards.id(boardId);
+    board.remove();
+    await group.save();
   } catch (err) {
     logger.error(`Error in deleteBoardQuery - ${err}`);
     throw err;
@@ -45,19 +30,9 @@ const deleteBoardQuery = async (groupName, boardId) => {
 const editBoardQuery = async (groupName, boardId, newBoardName) => {
   try {
     const group = await Group.findOne({ groupName });
-
-    if (group) {
-      const board = group.boards.id(boardId);
-
-      if (board) {
-        board.boardName = newBoardName;
-        await group.save();
-      } else {
-        throw new Error('Board not found');
-      }
-    } else {
-      throw new Error('Group not found');
-    }
+    const board = group.boards.id(boardId);
+    board.boardName = newBoardName;
+    await group.save();
   } catch (err) {
     logger.error(`Error in editBoardQuery - ${err}`);
     throw err;
