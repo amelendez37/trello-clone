@@ -1,6 +1,8 @@
 module.exports = {
-    "extends": "airbnb-base",
+    "extends": ["airbnb-base", "plugin:react/recommended"],
     "env": {
-      "jest": true
+      "jest": true,
+      "browser": true,
+      "node": true
     }
 };
