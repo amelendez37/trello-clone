@@ -4,7 +4,7 @@ const {
   findGroupQuery,
 } = require('./groupDAL');
 
-const groupController = async (req, res) => {
+const findGroupController = async (req, res) => {
   const { groupName } = req.params;
 
   try {
@@ -14,10 +14,10 @@ const groupController = async (req, res) => {
       return res.status(200).send(result);
     }
 
-    return res.status(401).send();
+    return res.status(404).send();
   } catch (err) {
     logger.error(`Error in groupController ${err}`);
-    return res.status(404).send();
+    return res.status(400).send();
   }
 };
 
@@ -31,14 +31,14 @@ const addGroupController = async (req, res) => {
       return res.status(201).send();
     }
 
-    return res.status(401).send();
+    return res.status(404).send();
   } catch (err) {
     logger.error(`Error in addGroupController - ${err}`);
-    return res.status(404).send();
+    return res.status(400).send();
   }
 };
 
 module.exports = {
   addGroupController,
-  groupController,
+  findGroupController,
 };

@@ -15,6 +15,6 @@ module.exports = async function controllerHelper(res, query, statusCode, errStr,
     return res.status(statusCode).send();
   } catch (err) {
     logger.error(`${errStr} - ${err}`);
-    return res.status(404).send();
+    return res.status(400).send();
   }
 };
