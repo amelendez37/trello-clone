@@ -28,7 +28,7 @@ const addGroupController = async (req, res) => {
     const isNewGroup = await addGroupQuery(groupName);
 
     if (isNewGroup) {
-      return res.status(201).send();
+      return res.status(201).send(isNewGroup);
     }
 
     return res.status(404).send();

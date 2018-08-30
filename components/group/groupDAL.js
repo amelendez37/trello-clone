@@ -5,12 +5,12 @@ const Group = mongoose.model('Group');
 
 /**
  * Finds a group
- * @param groupname - String
+ * @param groupName - String
  * @returns - Group object or false
  */
-const findGroupQuery = async (groupname) => {
+const findGroupQuery = async (groupName) => {
   try {
-    const group = await Group.findOne({ groupname });
+    const group = await Group.findOne({ groupName });
 
     if (group) {
       return group;
@@ -26,7 +26,7 @@ const findGroupQuery = async (groupname) => {
 /**
  * Saves a new group into database if they do not already exist
  * @param groupName - String
- * @returns - Boolean
+ * @returns - false if group already exists, otherwise new Group object
  */
 const addGroupQuery = async (groupName) => {
   try {
@@ -38,7 +38,7 @@ const addGroupQuery = async (groupName) => {
 
     const newGroup = new Group({ groupName });
     await newGroup.save();
-    return true;
+    return newGroup;
   } catch (err) {
     logger.error(`Error in addGroupQuery - ${err}`);
     throw err;

@@ -4,6 +4,6 @@ const {
 } = require('./groupControllers');
 
 module.exports = (router) => {
-  router.get('/group/:groupname', findGroupController);
+  router.get('/group/:groupName', findGroupController);
   router.post('/group', addGroupController);
 };

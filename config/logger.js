@@ -12,14 +12,14 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 } else if (process.env.NODE_ENV === 'production') {
   logger.add(new winston.transports.File({
-    filename: 'error.log',
+    filename: 'server_logs/error.log',
     level: 'error',
     json: true,
     colorize: false,
   }));
 
   logger.add(new winston.transports.File({
-    filename: 'combined.log',
+    filename: 'server_logs/combined.log',
     json: true,
     colorize: false,
   }));

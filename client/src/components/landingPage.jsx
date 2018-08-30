@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
-class Group extends React.Component {
+class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: '' };
@@ -17,19 +18,15 @@ class Group extends React.Component {
   }
 
   async handleExistingClick() {
-    try {
-      const data = await axios.get(`${this.url}/api/group/${this.state.input}`);
-      // redirect to boards
-    } catch (err) {
-      console.log('Group does not exist');
-    }
+    const res = await axios.get(`${this.url}/api/group/${this.state.input}`);
+    this.props.history.push({ pathname: `${res.data.groupName}/boards` });
   }
 
   async handleNewClick() {
-    await axios.post(`${this.url}/group`, {
+    const res = await axios.post(`${this.url}/api/group`, {
       groupName: this.state.input,
     });
-    // redirect to boards
+    this.props.history.push({ pathname: `${res.data.groupName}/boards` });
   }
 
   render() {
@@ -46,4 +43,8 @@ class Group extends React.Component {
   }
 }
 
-export default Group;
+LandingPage.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+export default LandingPage;
