@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ListItemSchema = new Schema({
-  text: { type: String },
+  text: { type: String, default: '' },
   completed: { type: Boolean, default: false },
 });
 

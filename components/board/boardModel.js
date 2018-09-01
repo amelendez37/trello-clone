@@ -4,7 +4,7 @@ const ListSchema = require('../list/listModel');
 const { Schema } = mongoose;
 
 const BoardSchema = new Schema({
-  boardName: { type: String },
+  boardName: { type: String, default: '' },
   lists: [ListSchema],
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 import LandingPage from './components/landingPage.jsx';
-import BoardPage from './components/boardPage.jsx';
+import BoardPage from './components/boards/boardPage.jsx';
 
 const App = () => (
   <Switch>

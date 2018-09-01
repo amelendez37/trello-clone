@@ -19,14 +19,21 @@ class LandingPage extends React.Component {
 
   async handleExistingClick() {
     const res = await axios.get(`${this.url}/api/group/${this.state.input}`);
-    this.props.history.push({ pathname: `${res.data.groupName}/boards` });
+    this.redirectToBoardPage(res);
   }
 
   async handleNewClick() {
     const res = await axios.post(`${this.url}/api/group`, {
       groupName: this.state.input,
     });
-    this.props.history.push({ pathname: `${res.data.groupName}/boards` });
+    this.redirectToBoardPage(res);
+  }
+
+  redirectToBoardPage(res) {
+    this.props.history.push({
+      pathname: `${res.data.groupName}/boards`,
+      state: { data: res.data },
+    });
   }
 
   render() {
@@ -35,8 +42,8 @@ class LandingPage extends React.Component {
         <h1>Group Name</h1>
         <input type="text" onChange={this.handleInputChange}/>
         <div>
-          <a href="#" onClick={this.handleExistingClick}>Existing Group</a>
-          <a href="#" onClick={this.handleNewClick}>New Group</a>
+          <button href="#" onClick={this.handleExistingClick}>Existing Group</button>
+          <button href="#" onClick={this.handleNewClick}>New Group</button>
         </div>
       </div>
     );
