@@ -9,12 +9,13 @@ class BoardPage extends React.Component {
     super(props);
     this.state = {
       addBoardClicked: false,
-      newBoardTitle: '',
+      boards: this.props.location.state.data.boards || [],
+      groupName: this.props.location.state.data.groupName,
     };
-    this.data = this.props.location.state.data;
 
     this.handleAddBoardClick = this.handleAddBoardClick.bind(this);
     this.handleCloseBoardClick = this.handleCloseBoardClick.bind(this);
+    this.addBoard = this.addBoard.bind(this);
     this.renderBoards = this.renderBoards.bind(this);
   }
 
@@ -22,30 +23,39 @@ class BoardPage extends React.Component {
     this.setState({ addBoardClicked: true });
   }
 
-  handleCloseBoardClick(e) {
-    const { id } = e.target.dataset;
+  handleCloseBoardClick() {
+    this.setState({ addBoardClicked: false });
+  }
 
-    if (!['create', 'add'].includes(id)) {
-      this.setState({ addBoardClicked: false });
-    }
+  addBoard(board) {
+    const { boards } = this.state;
+    boards.push(board);
+    this.setState({ boards });
   }
 
   renderBoards() {
-    return this.data.boards.map(board => <Board key={board.id} />);
+    return this.state.boards.map(
+      board => <Board key={board._id} />, // eslint-disable-line no-underscore-dangle
+    );
   }
 
   render() {
     return (
-      <div onClick={this.handleCloseBoardClick}>
+      <div>
         <header>
-          {this.data.groupName}
+          {this.state.groupName}
         </header>
         <div>
-          {this.state.addBoardClicked ? <CreateBoard /> : null}
+          {this.state.addBoardClicked
+            ? <CreateBoard
+              closeBoard={this.handleCloseBoardClick}
+              addBoard={this.addBoard}
+              groupName={this.state.groupName}
+              /> : null}
           {this.renderBoards()}
         </div>
         {this.state.addBoardClicked
-          ? null : <button data-id="add" onClick={this.handleAddBoardClick}>Add new Board</button>}
+          ? null : <button onClick={this.handleAddBoardClick}>Add new Board</button>}
       </div>
     );
   }

@@ -7,8 +7,10 @@ const Board = mongoose.model('Board');
 const addBoardQuery = async (groupName, boardName) => {
   try {
     const group = await Group.findOne({ groupName });
-    group.boards.push(new Board({ boardName }));
+    const newBoard = new Board({ boardName });
+    group.boards.push(newBoard);
     await group.save();
+    return newBoard;
   } catch (err) {
     logger.error(`Error in addBoardQuery - ${err}`);
     throw err;

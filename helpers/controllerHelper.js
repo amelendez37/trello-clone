@@ -11,8 +11,8 @@ const logger = require('../config/logger');
  */
 module.exports = async function controllerHelper(res, query, statusCode, errStr, ...args) {
   try {
-    await query(...args);
-    return res.status(statusCode).send();
+    const data = await query(...args);
+    return res.status(statusCode).send(data);
   } catch (err) {
     logger.error(`${errStr} - ${err}`);
     return res.status(400).send();
