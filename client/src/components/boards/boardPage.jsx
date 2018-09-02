@@ -35,7 +35,11 @@ class BoardPage extends React.Component {
 
   renderBoards() {
     return this.state.boards.map(
-      board => <Board key={board._id} />, // eslint-disable-line no-underscore-dangle
+      board => <Board
+               key={board._id}
+               title={board.title}
+               lists={board.lists}
+               />,
     );
   }
 
@@ -45,7 +49,7 @@ class BoardPage extends React.Component {
         <header>
           {this.state.groupName}
         </header>
-        <div>
+        <ul>
           {this.state.addBoardClicked
             ? <CreateBoard
               closeBoard={this.handleCloseBoardClick}
@@ -53,7 +57,7 @@ class BoardPage extends React.Component {
               groupName={this.state.groupName}
               /> : null}
           {this.renderBoards()}
-        </div>
+        </ul>
         {this.state.addBoardClicked
           ? null : <button onClick={this.handleAddBoardClick}>Add new Board</button>}
       </div>
