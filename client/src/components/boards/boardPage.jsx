@@ -37,7 +37,9 @@ class BoardPage extends React.Component {
     return this.state.boards.map(
       board => <Board
                key={board._id}
-               title={board.title}
+               boardId={board._id}
+               groupName={this.state.groupName}
+               boardTitle={board.title}
                lists={board.lists}
                />,
     );

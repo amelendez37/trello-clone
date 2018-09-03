@@ -27,7 +27,7 @@ class CreateBoard extends React.Component {
   render() {
     return (
       <div>
-        <h3>Creating board</h3>
+        <h3>Create new board</h3>
         <button onClick={this.props.closeBoard}>Close</button>
         <input onChange={this.handleInputChange}></input>
         <button onClick={this.handleAddBoardClick}>Add</button>

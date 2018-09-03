@@ -9,8 +9,10 @@ const addListItemQuery = async (groupName, boardId, listId, text) => {
     const group = await Group.findOne({ groupName });
     const board = group.boards.id(boardId);
     const list = board.lists.id(listId);
-    list.listItems.push(new ListItem({ text }));
+    const newListItem = new ListItem({ text });
+    list.listItems.push(newListItem);
     await group.save();
+    return newListItem;
   } catch (err) {
     logger.error(`Error in addListItemQuery - ${err}`);
     throw err;
