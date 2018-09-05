@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import List from '../lists/list.jsx';
-import CreateList from '../lists/createList.jsx';
+import List from '../list/list.jsx';
+import CreateList from '../createList/createList.jsx';
 
 class Board extends React.Component {
   constructor(props) {

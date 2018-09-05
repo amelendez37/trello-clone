@@ -4,7 +4,7 @@ const BoardSchema = require('../board/boardModel');
 const { Schema } = mongoose;
 
 const GroupSchema = new Schema({
-  groupName: { type: String },
+  groupName: { type: String, required: true },
   boards: [BoardSchema],
 });
 

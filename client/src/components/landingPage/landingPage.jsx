@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './landingPage.scss';
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -38,12 +39,15 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Group Name</h1>
-        <input type="text" onChange={this.handleInputChange}/>
-        <div>
-          <button href="#" onClick={this.handleExistingClick}>Existing Group</button>
-          <button href="#" onClick={this.handleNewClick}>New Group</button>
+      <div className="container">
+        <div className="landing">
+          <p className="landing__name">taskTracker/</p>
+          <h1 className="landing__title">Enter group name</h1>
+          <input className="landing__input" type="text" onChange={this.handleInputChange}/>
+          <div>
+            <button className="landing__btn landing__btn--exist" onClick={this.handleExistingClick}>Existing Group</button>
+            <button className="landing__btn landing__btn--new" onClick={this.handleNewClick}>New Group</button>
+          </div>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import ListItem from './listItem.jsx';
+import ListItem from '../listItem/listItem.jsx';
 
 class List extends React.Component {
   constructor(props) {

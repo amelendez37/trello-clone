@@ -1,0 +1,101 @@
+@import '../../../public/styles/variables.scss';
+
+.container {
+    background: linear-gradient(to right, $color-gradient-left, $color-gradient-right);
+    height: 100vh;
+    position: relative;
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 90vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    background-color: $color-primary;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+
+    &__title {
+        margin: -10rem 0 4rem 0;
+        color: #fff;
+        font-size: 3.5rem;
+        letter-spacing: .1rem;
+        word-spacing: .2rem;
+        font-weight: 700;
+    }
+
+    &__input {
+        margin-bottom: 4rem;
+        border-radius: 15px;
+        border: 1px solid $color-medium-grey;
+        width: 15rem;
+        height: 3rem;
+        font-size: 2rem;
+        padding: .5rem;
+        color: $color-dark-blue;
+        transition: width .3s;
+
+        &:focus {
+            outline: 0;
+            width: 25rem;
+        }
+    }
+
+    &__btn {
+        width: 10rem;
+        height: 3rem;
+        border-radius: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        color: $color-primary;
+
+        &--exist {
+            margin-right: 1.5rem;
+            background-color: #FFF;
+        }
+
+        &--new {
+            background-color: #FFF;
+        }
+
+        &--exist:hover,
+        &--new:hover {
+            background-color: $color-secondary;
+        }
+    }
+
+    &__name {
+        position: absolute;
+        top: 60%;
+        left: 3%;
+        font-size: 15rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, .01);
+        text-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+        z-index: -1;
+    }
+
+    @media screen and (max-height: 30em) {
+        &__name { display: none; }
+        &__title { margin: -3rem 0 4rem 0; }
+    }
+
+    @media screen and (max-height: 23.75em) {
+        &__title {
+            font-size: 2.5rem;
+            margin: -2rem 0 2rem 0;
+        }
+
+        &__input { margin-bottom: 2.5rem; }
+    }
+
+    @media screen and (max-width: 61.25em) {
+        &__name { display: none; }
+    }
+}

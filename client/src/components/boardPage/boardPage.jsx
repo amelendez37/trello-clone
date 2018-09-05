@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Board from './board.jsx';
-import CreateBoard from './createBoard.jsx';
+import Board from '../board/board.jsx';
+import CreateBoard from '../createBoard/createBoard.jsx';
 
 class BoardPage extends React.Component {
   constructor(props) {
