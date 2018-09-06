@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 *,
 *::before,
 *::after {
@@ -10,4 +12,27 @@ html {
     box-sizing: border-box;
     font-size: 62.5%; // 1rem = 10px
     font-family: 'Lato', sans-serif;
+}
+
+.container {
+    background: linear-gradient(to right, $color-gradient-left, $color-gradient-right);
+    height: 100vh;
+    position: relative;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 90vw;
+    height: 85vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+    background-color: $color-primary;
+    box-shadow: $subtle-shadow;
+    overflow: hidden;
 }

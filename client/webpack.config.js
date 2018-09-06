@@ -30,6 +30,10 @@ module.exports = () => {
           exclude: /node_modules/,
           use: ['babel-loader'],
         },
+        {
+          test: /\.svg$/,
+          use: ['react-svg-loader'],
+        },
       ],
     },
     plugins: [new webpack.DefinePlugin({

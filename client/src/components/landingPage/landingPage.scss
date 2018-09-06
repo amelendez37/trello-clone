@@ -1,25 +1,7 @@
 @import '../../../public/styles/variables.scss';
+@import '../../../public/styles/main.scss';
 
-.container {
-    background: linear-gradient(to right, $color-gradient-left, $color-gradient-right);
-    height: 100vh;
-    position: relative;
-}
-
-.landing {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 90vw;
-    height: 80vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    background-color: $color-primary;
-    box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+.inner {
 
     &__title {
         margin: -10rem 0 4rem 0;
@@ -37,7 +19,7 @@
         width: 15rem;
         height: 3rem;
         font-size: 2rem;
-        padding: .5rem;
+        padding: .5rem 1rem;
         color: $color-dark-blue;
         transition: width .3s;
 

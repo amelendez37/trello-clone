@@ -40,13 +40,13 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="landing">
-          <p className="landing__name">taskTracker/</p>
-          <h1 className="landing__title">Enter group name</h1>
-          <input className="landing__input" type="text" onChange={this.handleInputChange}/>
+        <div className="inner">
+          <p className="inner__name">taskTracker/</p>
+          <h1 className="inner__title">Enter group name</h1>
+          <input className="inner__input" type="text" onChange={this.handleInputChange}/>
           <div>
-            <button className="landing__btn landing__btn--exist" onClick={this.handleExistingClick}>Existing Group</button>
-            <button className="landing__btn landing__btn--new" onClick={this.handleNewClick}>New Group</button>
+            <button className="inner__btn inner__btn--exist" onClick={this.handleExistingClick}>Existing Group</button>
+            <button className="inner__btn inner__btn--new" onClick={this.handleNewClick}>New Group</button>
           </div>
         </div>
       </div>

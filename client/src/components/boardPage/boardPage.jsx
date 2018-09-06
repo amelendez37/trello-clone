@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Board from '../board/board.jsx';
 import CreateBoard from '../createBoard/createBoard.jsx';
+import CircleLeft from '../../../public/img/circle-left.svg';
+import './boardPage.scss';
 
 class BoardPage extends React.Component {
   constructor(props) {
@@ -47,21 +49,33 @@ class BoardPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <header>
-          {this.state.groupName}
-        </header>
-        <ul>
-          {this.state.addBoardClicked
-            ? <CreateBoard
-              closeBoard={this.handleCloseBoardClick}
-              addBoard={this.addBoard}
-              groupName={this.state.groupName}
-              /> : null}
-          {this.renderBoards()}
-        </ul>
-        {this.state.addBoardClicked
-          ? null : <button onClick={this.handleAddBoardClick}>Add new Board</button>}
+      <div className="container">
+        <div className="inner">
+          <div className="inner__boards">
+            <div className="inner__sidebar--1">
+              <button className="inner__sidebar--1-back-btn">
+                <CircleLeft />
+              </button>
+            </div>
+            <div className="inner__sidebar--2">
+              <p className="inner__sidebar--2-groupname">{this.state.groupName}</p>
+              {this.state.addBoardClicked ? null : <button
+                                                   className="inner__sidebar--2-add-btn"
+                                                   onClick={this.handleAddBoardClick}>
+                                                   Add board
+                                                   </button>}
+            </div>
+            <ul className="inner__list">
+              {this.state.addBoardClicked
+                ? <CreateBoard
+                  closeBoard={this.handleCloseBoardClick}
+                  addBoard={this.addBoard}
+                  groupName={this.state.groupName}
+                  /> : null}
+              {this.renderBoards()}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
