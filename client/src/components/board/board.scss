@@ -13,7 +13,9 @@
 
     &__title {
         word-wrap: break-word;
-        padding: 2rem 1rem;
+        padding: 3rem 1rem;
+        color: $color-dark-blue;
+        font-weight: 700;
     }
 
     &__list-count {

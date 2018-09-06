@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Board from '../board/board.jsx';
 import CreateBoard from '../createBoard/createBoard.jsx';
+import List from '../list/list.jsx';
 import CircleLeft from '../../../public/img/circle-left.svg';
 import './boardPage.scss';
 
@@ -13,20 +14,28 @@ class BoardPage extends React.Component {
       addBoardClicked: false,
       boards: this.props.location.state.data.boards || [],
       groupName: this.props.location.state.data.groupName,
+      selectedBoard: null,
     };
 
     this.handleAddBoardClick = this.handleAddBoardClick.bind(this);
     this.handleCloseBoardClick = this.handleCloseBoardClick.bind(this);
+    this.handleBoardClick = this.handleBoardClick.bind(this);
     this.addBoard = this.addBoard.bind(this);
+    this.renderAddBoardButton = this.renderAddBoardButton.bind(this);
     this.renderBoards = this.renderBoards.bind(this);
   }
 
-  handleAddBoardClick() {
-    this.setState({ addBoardClicked: true });
-  }
+  handleAddBoardClick() { this.setState({ addBoardClicked: true }); }
 
-  handleCloseBoardClick() {
-    this.setState({ addBoardClicked: false });
+  handleCloseBoardClick() { this.setState({ addBoardClicked: false }); }
+
+  /**
+   * Called within Board component
+   */
+  handleBoardClick(e) {
+    const { id } = e.target.dataset;
+    const board = this.state.boards.find(b => b._id === id);
+    this.setState({ selectedBoard: board });
   }
 
   addBoard(board) {
@@ -35,16 +44,59 @@ class BoardPage extends React.Component {
     this.setState({ boards });
   }
 
+  renderAddBoardButton() {
+    return (
+      <button
+      className="inner__sidebar--2-add-btn"
+      onClick={this.handleAddBoardClick}>
+      Add board
+      </button>
+    );
+  }
+
+  renderLists() {
+    let { lists } = this.state.selectedBoard;
+
+    lists = lists.map(
+      list => <List
+              key={list._id}
+              groupName={this.state.groupName}
+              boardId={this.selectedBoard._id}
+              listId={list._id}
+              listName={list.listName}
+              listItems={list.listItems}
+              />,
+    );
+
+    return (
+      <ul className="inner__list">
+        {lists}
+      </ul>
+    );
+  }
+
   renderBoards() {
-    return this.state.boards.map(
+    const boards = this.state.boards.map(
       board => <Board
                 key={board._id}
                 boardId={board._id}
                 boardName={board.boardName}
                 lists={board.lists}
                 groupName={this.state.groupName}
+                handleBoardClick={this.handleBoardClick}
                 />,
     );
+
+    return (
+      <ul className="inner__list">
+        {this.state.addBoardClicked
+          ? <CreateBoard
+            closeBoard={this.handleCloseBoardClick}
+            addBoard={this.addBoard}
+            groupName={this.state.groupName}
+            /> : null}
+        {boards}
+      </ul>);
   }
 
   render() {
@@ -59,21 +111,9 @@ class BoardPage extends React.Component {
             </div>
             <div className="inner__sidebar--2">
               <h1 className="inner__sidebar--2-groupname">{this.state.groupName}</h1>
-              {this.state.addBoardClicked ? null : <button
-                                                   className="inner__sidebar--2-add-btn"
-                                                   onClick={this.handleAddBoardClick}>
-                                                   Add board
-                                                   </button>}
+              {this.state.addBoardClicked ? null : this.renderAddBoardButton()}
             </div>
-            <ul className="inner__list">
-              {this.state.addBoardClicked
-                ? <CreateBoard
-                  closeBoard={this.handleCloseBoardClick}
-                  addBoard={this.addBoard}
-                  groupName={this.state.groupName}
-                  /> : null}
-              {this.renderBoards()}
-            </ul>
+            {this.state.selectedBoard ? this.renderLists() : this.renderBoards()}
           </div>
         </div>
       </div>
