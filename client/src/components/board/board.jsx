@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import List from '../list/list.jsx';
-import CreateList from '../createList/createList.jsx';
+import './board.scss';
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.boardTitle || '',
+      boardName: this.props.boardName || '',
       lists: this.props.lists || [],
     };
 
     this.renderLists = this.renderLists.bind(this);
+    this.handleBoardClick = this.handleBoardClick.bind(this);
     this.addList = this.addList.bind(this);
   }
 
@@ -31,6 +32,10 @@ class Board extends React.Component {
     );
   }
 
+  handleBoardClick() {
+    console.log('clicked');
+  }
+
   addList(list) {
     const { lists } = this.state;
     lists.push(list);
@@ -39,16 +44,8 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.state.boardTitle || null}</h2>
-        <ul>
-          {this.renderLists(this.state.lists)}
-          <CreateList
-          addList={this.addList}
-          groupName={this.props.groupName}
-          boardId={this.props.boardId}
-          />
-        </ul>
+      <div className="board" onClick={this.handleBoardClick}>
+        <h2 className="board__title">{this.state.boardName}</h2>
       </div>
     );
   }
@@ -56,7 +53,7 @@ class Board extends React.Component {
 
 Board.propTypes = {
   groupName: PropTypes.string.isRequired,
-  boardTitle: PropTypes.string,
+  boardName: PropTypes.string.isRequired,
   boardId: PropTypes.string,
   lists: PropTypes.array.isRequired,
 };

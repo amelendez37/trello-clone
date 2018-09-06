@@ -55,7 +55,10 @@
                 border-radius: 7px;
                 background-color: $color-primary;
                 color: #fff;
-                box-shadow: $subtle-shadow;
+                box-shadow: $tiny-shadow;
+
+                &:focus { outline: 0; }
+
             }
         }
     }
@@ -63,10 +66,8 @@
     &__list {
         grid-column: 3 / -1;
         grid-row: 1 / -1;
-        
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1rem;
+
+        overflow-y: scroll;
         background-color: $color-secondary;
     }
 }

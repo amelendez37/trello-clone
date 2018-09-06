@@ -38,12 +38,12 @@ class BoardPage extends React.Component {
   renderBoards() {
     return this.state.boards.map(
       board => <Board
-               key={board._id}
-               boardId={board._id}
-               groupName={this.state.groupName}
-               boardTitle={board.title}
-               lists={board.lists}
-               />,
+                key={board._id}
+                boardId={board._id}
+                boardName={board.boardName}
+                lists={board.lists}
+                groupName={this.state.groupName}
+                />,
     );
   }
 
@@ -58,7 +58,7 @@ class BoardPage extends React.Component {
               </button>
             </div>
             <div className="inner__sidebar--2">
-              <p className="inner__sidebar--2-groupname">{this.state.groupName}</p>
+              <h1 className="inner__sidebar--2-groupname">{this.state.groupName}</h1>
               {this.state.addBoardClicked ? null : <button
                                                    className="inner__sidebar--2-add-btn"
                                                    onClick={this.handleAddBoardClick}>
