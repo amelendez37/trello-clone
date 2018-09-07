@@ -9,7 +9,6 @@ const App = () => (
   <Switch>
     <Route exact path='/' component={LandingPage} />
     <Route exact path='/:groupName/boards' component={BoardPage} />
-    {/* <Route exact path='/:groupName/:boardName/lists' component={ListPage} /> */}
   </Switch>
 );
 

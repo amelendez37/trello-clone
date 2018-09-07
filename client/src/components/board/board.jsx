@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import List from '../list/list.jsx';
 import './board.scss';
-
+// POTENTIALLY MAKE STATELESS
 class Board extends React.Component {
   constructor(props) {
     super(props);
@@ -11,14 +10,6 @@ class Board extends React.Component {
       boardName: this.props.boardName || '',
       lists: this.props.lists || [],
     };
-
-    this.addList = this.addList.bind(this);
-  }
-
-  addList(list) {
-    const { lists } = this.state;
-    lists.push(list);
-    this.setState({ lists });
   }
 
   render() {

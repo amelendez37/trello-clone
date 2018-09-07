@@ -1,0 +1,55 @@
+@import '../../../public/styles/variables.scss';
+
+.create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: $color-primary;
+    top: 15rem;
+    left: 5rem;
+    width: 20rem;
+    height: 15rem;
+    border-radius: 7px;
+    box-shadow: $large-shadow;
+
+
+    &__title {
+        font-size: 2rem;
+        padding: .5rem;
+        margin-top: 2rem;
+        color: #fff;
+    }
+
+    &__close {
+        position: absolute;
+        left: 0;
+        fill: #fff;
+        padding: .5rem 0 0 .5rem;
+        cursor: pointer;
+    }
+
+    &__add {
+       fill: #fff;
+       margin-top: 1.3rem;
+       height: 2rem;
+       width: auto;
+       cursor: pointer; 
+    }
+
+    &__input {
+        height: 2.5rem;
+        margin-top: 1rem;
+        border-radius: 7px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-align: center;
+        border: none;
+        padding: 0 .5rem;
+        color: $color-dark-blue;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}

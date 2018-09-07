@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Board from '../board/board.jsx';
 import CreateBoard from '../createBoard/createBoard.jsx';
 import List from '../list/list.jsx';
+import CreateList from '../createList/createList.jsx';
 import CircleLeft from '../../../public/img/circle-left.svg';
 import './boardPage.scss';
 
@@ -11,23 +12,27 @@ class BoardPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addBoardClicked: false,
+      addButtonClicked: false,
       boards: this.props.location.state.data.boards || [],
       groupName: this.props.location.state.data.groupName,
       selectedBoard: null,
     };
 
-    this.handleAddBoardClick = this.handleAddBoardClick.bind(this);
-    this.handleCloseBoardClick = this.handleCloseBoardClick.bind(this);
+    this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
+    this.handleCloseButtonClick = this.handleCloseButtonClick.bind(this);
     this.handleBoardClick = this.handleBoardClick.bind(this);
     this.addBoard = this.addBoard.bind(this);
-    this.renderAddBoardButton = this.renderAddBoardButton.bind(this);
+    this.addList = this.addList.bind(this);
+    this.renderAddButton = this.renderAddButton.bind(this);
     this.renderBoards = this.renderBoards.bind(this);
   }
 
-  handleAddBoardClick() { this.setState({ addBoardClicked: true }); }
+  /**
+   * Called in either CreateBoard or CreateList componentes
+   */
+  handleAddButtonClick() { this.setState({ addButtonClicked: true }); }
 
-  handleCloseBoardClick() { this.setState({ addBoardClicked: false }); }
+  handleCloseButtonClick() { this.setState({ addButtonClicked: false }); }
 
   /**
    * Called within Board component
@@ -44,12 +49,21 @@ class BoardPage extends React.Component {
     this.setState({ boards });
   }
 
-  renderAddBoardButton() {
+  addList(list) {
+    const { lists } = this.state.selectedBoard;
+    lists.push(list);
+    this.setState({ lists });
+  }
+
+  /**
+   * Renders a button to either add a new board or list
+   */
+  renderAddButton(innerHTML) {
     return (
       <button
       className="inner__sidebar--2-add-btn"
-      onClick={this.handleAddBoardClick}>
-      Add board
+      onClick={this.handleAddButtonClick}>
+      {innerHTML}
       </button>
     );
   }
@@ -61,7 +75,7 @@ class BoardPage extends React.Component {
       list => <List
               key={list._id}
               groupName={this.state.groupName}
-              boardId={this.selectedBoard._id}
+              boardId={this.state.selectedBoard._id}
               listId={list._id}
               listName={list.listName}
               listItems={list.listItems}
@@ -70,6 +84,12 @@ class BoardPage extends React.Component {
 
     return (
       <ul className="inner__list">
+        {this.state.addButtonClicked
+          ? <CreateList
+          addList={this.addList}
+          groupName={this.state.groupName}
+          boardId={this.state.selectedBoard._id}
+          /> : null}
         {lists}
       </ul>
     );
@@ -89,9 +109,9 @@ class BoardPage extends React.Component {
 
     return (
       <ul className="inner__list">
-        {this.state.addBoardClicked
+        {this.state.addButtonClicked
           ? <CreateBoard
-            closeBoard={this.handleCloseBoardClick}
+            closeCreateBoard={this.handleCloseButtonClick}
             addBoard={this.addBoard}
             groupName={this.state.groupName}
             /> : null}
@@ -111,9 +131,15 @@ class BoardPage extends React.Component {
             </div>
             <div className="inner__sidebar--2">
               <h1 className="inner__sidebar--2-groupname">{this.state.groupName}</h1>
-              {this.state.addBoardClicked ? null : this.renderAddBoardButton()}
+              {
+                this.state.selectedBoard
+                  ? this.renderAddButton('Add list') : this.renderAddButton('Add board')
+              }
             </div>
-            {this.state.selectedBoard ? this.renderLists() : this.renderBoards()}
+              {
+                this.state.selectedBoard
+                  ? this.renderLists() : this.renderBoards()
+              }
           </div>
         </div>
       </div>

@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import Cross from '../../../public/img/cross.svg';
+import SquaredPlus from '../../../public/img/squared-plus.svg';
+import './createBoard.scss';
+
 class CreateBoard extends React.Component {
   constructor(props) {
     super(props);
@@ -26,18 +30,22 @@ class CreateBoard extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Create new board</h3>
-        <button onClick={this.props.closeBoard}>Close</button>
-        <input onChange={this.handleInputChange}></input>
-        <button onClick={this.handleAddBoardClick}>Add</button>
+      <div className="create">
+        <h3 className="create__title">Create board</h3>
+        <input className="create__input" onChange={this.handleInputChange}></input>
+        <div className="create__close" onClick={this.props.closeCreateBoard}>
+          <Cross width={25} height={25}/>
+        </div>
+        <div className="create__add" onClick={this.handleAddBoardClick}>
+          <SquaredPlus width={30} height={30}/>
+        </div>
       </div>
     );
   }
 }
 
 CreateBoard.propTypes = {
-  closeBoard: PropTypes.func.isRequired,
+  closeCreateBoard: PropTypes.func.isRequired,
   addBoard: PropTypes.func.isRequired,
   groupName: PropTypes.string.isRequired,
 };

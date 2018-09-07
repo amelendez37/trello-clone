@@ -44,8 +44,7 @@ class CreateList extends React.Component {
 CreateList.propTypes = {
   addList: PropTypes.func.isRequired,
   groupName: PropTypes.string.isRequired,
-  boardTitle: PropTypes.string,
-  boardId: PropTypes.string,
+  boardId: PropTypes.string.isRequired,
 };
 
 export default CreateList;
