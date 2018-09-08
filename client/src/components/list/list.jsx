@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import ListItem from '../listItem/listItem.jsx';
+import './list.scss';
 
 class List extends React.Component {
   constructor(props) {
@@ -16,12 +17,6 @@ class List extends React.Component {
     this.addListItem = this.addListItem.bind(this);
     this.handleListItemAdd = this.handleListItemAdd.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  renderListItems() {
-    return this.state.listItems.map(
-      listItem => <ListItem key={listItem._id} listItem={listItem} />,
-    );
   }
 
   async handleListItemAdd(e) {
@@ -54,17 +49,23 @@ class List extends React.Component {
     this.setState({ input: e.target.value });
   }
 
+  renderListItems() {
+    return this.state.listItems.map(
+      listItem => <ListItem key={listItem._id} listItem={listItem} />,
+    );
+  }
+
   render() {
     return (
-      <div>
-        <h2>{this.props.listName}</h2>
-        <input
+      <div className="list">
+        <h2 className="list__title">{this.props.listName}</h2>
+        <input className="list__input"
         placeholder="Add task"
         onChange={this.handleInputChange}
         onKeyPress={this.handleListItemAdd}
         >
         </input>
-        <ul>
+        <ul className="list__items">
           {this.renderListItems()}
         </ul>
       </div>

@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Checkmark from '../../../public/img/checkmark.svg';
+import './listItem.scss';
+
 class ListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -11,16 +14,18 @@ class ListItem extends React.Component {
 
   renderListItemCompleted() {
     return (
-      <div className="completed" onClick={this.toggleCompleted}>
-        <p>{this.props.listItem.text}</p>
+      <div className="list-item complete" onClick={this.toggleCompleted}>
+        <div className="checkmark"><Checkmark width={15} height={15} /></div>
+        <p className="list-item__text">{this.props.listItem.text}</p>
       </div>
     );
   }
 
   renderListItemIncomplete() {
     return (
-      <div className="incomplete" onClick={this.toggleCompleted}>
-        <p>{this.props.listItem.text}</p>
+      <div className="list-item incomplete" onClick={this.toggleCompleted}>
+        <div className="checkmark"><Checkmark width={15} height={15} /></div>
+        <p className="list-item__text">{this.props.listItem.text}</p>
       </div>
     );
   }

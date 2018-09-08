@@ -1,0 +1,46 @@
+@import '../../../public/styles/variables.scss';
+
+.list {
+    background-color: #fff;
+    display: inline-block;
+    width: 25rem;
+    margin: 3rem 0 3rem 3rem;
+    padding: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+    vertical-align: top;
+    box-shadow: $tiny-shadow;
+
+    &__title {
+        font-size: 2rem;
+        word-wrap: break-word;
+        padding-bottom: 1rem;
+        color: $color-dark-blue;
+        font-weight: 700;
+    }
+
+    &__input {
+        height: 2.5rem;
+        width: 7rem;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        text-align: center;
+        border: 1px solid $color-dark-blue;
+        color: $color-dark-blue;
+        box-shadow: $tiny-shadow;
+        transition: all .4s;
+
+        &:focus {
+            outline: 0;
+            width: 21rem;
+        }
+
+        &::placeholder { color: $color-dark-blue; }
+        
+        &:focus::-webkit-input-placeholder { color: transparent; }
+    }
+
+    &__items {
+        margin-top: 1.3rem;
+    }
+}

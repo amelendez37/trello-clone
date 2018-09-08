@@ -6,7 +6,7 @@
     margin: 3rem 0 0 3rem;
     width: 25rem;
     text-align: center;
-    border-radius: 7px;
+    border-radius: 5px;
     box-shadow: $tiny-shadow;
     cursor: pointer;
     transition: all .3s;
@@ -16,13 +16,5 @@
         padding: 3rem 1rem;
         color: $color-dark-blue;
         font-weight: 700;
-    }
-
-    &__list-count {
-
-    }
-
-    &__completion-count {
-
     }
 }
