@@ -51,7 +51,13 @@ class List extends React.Component {
 
   renderListItems() {
     return this.state.listItems.map(
-      listItem => <ListItem key={listItem._id} listItem={listItem} />,
+      listItem => <ListItem
+                  key={listItem._id}
+                  listItem={listItem}
+                  groupName={this.props.groupName}
+                  boardId={this.props.boardId}
+                  listId={this.props.listId}
+                  />,
     );
   }
 

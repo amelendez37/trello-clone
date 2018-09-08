@@ -51,7 +51,6 @@ const editListItemController = async (req, res) => {
     boardId,
     listId,
     listItemId,
-    newText,
     completed,
   } = req.body;
 
@@ -64,7 +63,6 @@ const editListItemController = async (req, res) => {
     boardId,
     listId,
     listItemId,
-    newText,
     completed,
   );
 };

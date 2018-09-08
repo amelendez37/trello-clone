@@ -33,13 +33,12 @@ const deleteListItemQuery = async (groupName, boardId, listId, listItemId) => {
   }
 };
 
-const editListItemQuery = async (groupName, boardId, listId, listItemId, newText, completed) => {
+const editListItemQuery = async (groupName, boardId, listId, listItemId, completed) => {
   try {
     const group = await Group.findOne({ groupName });
     const board = group.boards.id(boardId);
     const list = board.lists.id(listId);
     const listItem = list.listItems.id(listItemId);
-    listItem.text = newText;
     listItem.completed = completed;
     await group.save();
   } catch (err) {

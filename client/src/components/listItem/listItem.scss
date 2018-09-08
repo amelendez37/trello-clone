@@ -3,6 +3,7 @@
 .list-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     text-align: left;
     border-radius: 5px;
     padding: 1.5rem;
@@ -31,6 +32,10 @@
     fill: $color-medium-grey;
 }
 
-.checkmark {
+.checkmark-icon {
     margin-right: 1rem;
+}
+
+.delete-icon {
+    // align-self: flex-end;
 }
