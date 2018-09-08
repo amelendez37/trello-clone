@@ -14,7 +14,8 @@ class List extends React.Component {
     };
 
     this.renderListItems = this.renderListItems.bind(this);
-    this.addListItem = this.addListItem.bind(this);
+    this.addListItemToState = this.addListItemToState.bind(this);
+    this.deleteListItemFromState = this.deleteListItemFromState.bind(this);
     this.handleListItemAdd = this.handleListItemAdd.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -35,13 +36,19 @@ class List extends React.Component {
         text: this.state.input,
       });
 
-      this.addListItem(res.data);
+      this.addListItemToState(res.data);
     }
   }
 
-  addListItem(listItem) {
+  addListItemToState(listItem) {
     const { listItems } = this.state;
     listItems.push(listItem);
+    this.setState({ listItems });
+  }
+
+  deleteListItemFromState(id) {
+    let { listItems } = this.state;
+    listItems = listItems.filter(item => item._id !== id);
     this.setState({ listItems });
   }
 
@@ -57,6 +64,7 @@ class List extends React.Component {
                   groupName={this.props.groupName}
                   boardId={this.props.boardId}
                   listId={this.props.listId}
+                  deleteListItemFromState={this.deleteListItemFromState}
                   />,
     );
   }

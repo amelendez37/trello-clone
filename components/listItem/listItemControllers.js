@@ -32,7 +32,7 @@ const deleteListItemController = async (req, res) => {
     listId,
     listItemId,
   } = req.body;
-
+  console.log(req.body);
   controllerHelper(
     res,
     deleteListItemQuery,

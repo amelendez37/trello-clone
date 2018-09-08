@@ -12,18 +12,61 @@ class ListItem extends React.Component {
     super(props);
     this.state = {
       completed: this.props.listItem.completed,
-      text: this.props.listItem.text,
     };
 
+    this.deleteListItem = this.deleteListItem.bind(this);
     this.toggleCompleted = this.toggleCompleted.bind(this);
+  }
+
+  async deleteListItem() {
+    const {
+      groupName,
+      boardId,
+      listId,
+      listItem,
+    } = this.props;
+
+    await axios.delete(`${process.env.API_URL}/api/listItem`, {
+      data: {
+        groupName,
+        boardId,
+        listId,
+        listItemId: listItem._id,
+      },
+    });
+
+    this.props.deleteListItemFromState(listItem._id);
+  }
+
+  toggleCompleted(e) {
+    if (e.target.dataset.name !== 'bin') {
+      const {
+        groupName,
+        boardId,
+        listId,
+        listItem,
+      } = this.props;
+
+      this.setState({ completed: !this.state.completed }, async () => {
+        await axios.patch(`${process.env.API_URL}/api/listItem`, {
+          groupName,
+          boardId,
+          listId,
+          listItemId: listItem._id,
+          completed: this.state.completed,
+        });
+      });
+    }
   }
 
   renderListItemCompleted() {
     return (
       <div className="list-item complete" onClick={this.toggleCompleted}>
-        <div className="checkmark-icon"><Checkmark width={15} height={15} /></div>
-        <p className="list-item__text" data-id="text">{this.state.text}</p>
-        <div className="delete-icon"><Bin/></div>
+        <div className="checkmark-icon"><Checkmark width={15} height={17} /></div>
+        <p className="list-item__text" data-id="text">{this.props.listItem.text}</p>
+        <div className="trash-icon" onClick={this.deleteListItem}>
+          <Bin data-name="bin" data-id={this.props.listItem._id} width={20} height={20} />
+        </div>
       </div>
     );
   }
@@ -31,29 +74,13 @@ class ListItem extends React.Component {
   renderListItemIncomplete() {
     return (
       <div className="list-item incomplete" onClick={this.toggleCompleted}>
-        <div className="checkmark-icon"><Checkmark width={15} height={15} /></div>
-        <p className="list-item__text" data-id="text">{this.state.text}</p>
-        <div className="delete-icon"><Bin/></div>
+        <div className="checkmark-icon"><Checkmark width={15} height={17} /></div>
+        <p className="list-item__text">{this.props.listItem.text}</p>
+        <div className="trash-icon" onClick={this.deleteListItem}>
+          <Bin data-name="bin" data-id={this.props.listItem._id} width={20} height={20} />
+        </div>
       </div>
     );
-  }
-
-  toggleCompleted() {
-    const {
-      groupName,
-      boardId,
-      listId,
-    } = this.props;
-
-    this.setState({ completed: !this.state.completed }, async () => {
-      await axios.patch(`${process.env.API_URL}/api/listItem`, {
-        groupName,
-        boardId,
-        listId,
-        listItemId: this.props.listItem._id,
-        completed: this.state.completed,
-      });
-    });
   }
 
   render() {
@@ -68,6 +95,7 @@ ListItem.propTypes = {
   groupName: PropTypes.string.isRequired,
   boardId: PropTypes.string.isRequired,
   listId: PropTypes.string.isRequired,
+  deleteListItemFromState: PropTypes.func.isRequired,
 };
 
 export default ListItem;
