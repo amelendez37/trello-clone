@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Board from '../board/board.jsx';
-import CreateBoardOrList from '../createBoardOrList/createBoardOrList.jsx';
 import List from '../list/list.jsx';
+import CreateBoardOrList from '../createBoardOrList/createBoardOrList.jsx';
 import CircleLeft from '../../../public/img/circle-left.svg';
-import './boardPage.scss';
+import './homePage.scss';
 
-class BoardPage extends React.Component {
+class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,8 +15,10 @@ class BoardPage extends React.Component {
       boards: this.props.location.state.data.boards || [],
       groupName: this.props.location.state.data.groupName,
       selectedBoard: null,
+      view: 'boards', // options: 'boards' or 'lists'
     };
 
+    this.manageView = this.manageView.bind(this);
     this.handleAddButtonClick = this.handleAddButtonClick.bind(this);
     this.handleCloseButtonClick = this.handleCloseButtonClick.bind(this);
     this.handleBoardClick = this.handleBoardClick.bind(this);
@@ -24,6 +26,14 @@ class BoardPage extends React.Component {
     this.addList = this.addList.bind(this);
     this.renderAddButton = this.renderAddButton.bind(this);
     this.renderBoards = this.renderBoards.bind(this);
+  }
+
+  manageView() {
+    if (this.state.view === 'boards') {
+      this.props.history.push({ pathname: '/' });
+    } else if (this.state.view === 'lists') {
+      this.setState({ view: 'boards' });
+    }
   }
 
   /**
@@ -39,7 +49,10 @@ class BoardPage extends React.Component {
   handleBoardClick(e) {
     const { id } = e.target.dataset;
     const board = this.state.boards.find(b => b._id === id);
-    this.setState({ selectedBoard: board });
+    this.setState({
+      selectedBoard: board,
+      view: 'lists',
+    });
   }
 
   addBoard(board) {
@@ -127,19 +140,19 @@ class BoardPage extends React.Component {
         <div className="inner">
           <div className="inner__boards">
             <div className="inner__sidebar--1">
-              <button className="inner__sidebar--1-back-btn">
+              <button className="inner__sidebar--1-back-btn" onClick={this.manageView}>
                 <CircleLeft />
               </button>
             </div>
             <div className="inner__sidebar--2">
               <h1 className="inner__sidebar--2-groupname">{this.state.groupName}</h1>
               {
-                this.state.selectedBoard
+                this.state.view === 'lists'
                   ? this.renderAddButton('Add list') : this.renderAddButton('Add board')
               }
             </div>
               {
-                this.state.selectedBoard
+                this.state.view === 'lists'
                   ? this.renderLists() : this.renderBoards()
               }
           </div>
@@ -149,8 +162,9 @@ class BoardPage extends React.Component {
   }
 }
 
-BoardPage.propTypes = {
+HomePage.propTypes = {
   location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
-export default BoardPage;
+export default HomePage;

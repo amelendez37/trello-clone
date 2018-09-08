@@ -20,19 +20,19 @@ class LandingPage extends React.Component {
 
   async handleExistingClick() {
     const res = await axios.get(`${this.url}/api/group/${this.state.input}`);
-    this.redirectToBoardPage(res);
+    this.redirectToHomePage(res);
   }
 
   async handleNewClick() {
     const res = await axios.post(`${this.url}/api/group`, {
       groupName: this.state.input,
     });
-    this.redirectToBoardPage(res);
+    this.redirectToHomePage(res);
   }
 
-  redirectToBoardPage(res) {
+  redirectToHomePage(res) {
     this.props.history.push({
-      pathname: `${res.data.groupName}/boards`,
+      pathname: `${res.data.groupName}/home`,
       state: { data: res.data },
     });
   }
