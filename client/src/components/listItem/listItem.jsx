@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-
 import Checkmark from '../../../public/img/checkmark.svg';
 import Bin from '../../../public/img/bin.svg';
 import './listItem.scss';
@@ -16,6 +15,7 @@ class ListItem extends React.Component {
 
     this.deleteListItem = this.deleteListItem.bind(this);
     this.toggleCompleted = this.toggleCompleted.bind(this);
+    this.renderListItem = this.renderListItem.bind(this);
   }
 
   async deleteListItem() {
@@ -59,9 +59,12 @@ class ListItem extends React.Component {
     }
   }
 
-  renderListItemCompleted() {
+  /**
+   * @param String - 'complete' or 'incomplete'
+   */
+  renderListItem(status) {
     return (
-      <div className="list-item complete" onClick={this.toggleCompleted}>
+      <div className={`list-item ${status}`} onClick={this.toggleCompleted}>
         <div className="checkmark-icon"><Checkmark width={15} height={17} /></div>
         <p className="list-item__text" data-id="text">{this.props.listItem.text}</p>
         <div className="trash-icon" onClick={this.deleteListItem}>
@@ -71,21 +74,9 @@ class ListItem extends React.Component {
     );
   }
 
-  renderListItemIncomplete() {
-    return (
-      <div className="list-item incomplete" onClick={this.toggleCompleted}>
-        <div className="checkmark-icon"><Checkmark width={15} height={17} /></div>
-        <p className="list-item__text">{this.props.listItem.text}</p>
-        <div className="trash-icon" onClick={this.deleteListItem}>
-          <Bin data-name="bin" data-id={this.props.listItem._id} width={20} height={20} />
-        </div>
-      </div>
-    );
-  }
-
   render() {
     return (
-      this.state.completed ? this.renderListItemCompleted() : this.renderListItemIncomplete()
+      this.state.completed ? this.renderListItem('complete') : this.renderListItem('incomplete')
     );
   }
 }
