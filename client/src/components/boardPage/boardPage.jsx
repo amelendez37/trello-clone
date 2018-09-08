@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Board from '../board/board.jsx';
-import CreateBoard from '../createBoard/createBoard.jsx';
+import CreateBoardOrList from '../createBoardOrList/createBoardOrList.jsx';
 import List from '../list/list.jsx';
-import CreateList from '../createList/createList.jsx';
 import CircleLeft from '../../../public/img/circle-left.svg';
 import './boardPage.scss';
 
@@ -28,7 +27,7 @@ class BoardPage extends React.Component {
   }
 
   /**
-   * Called in either CreateBoard or CreateList componentes
+   * Called in CreateBoardOrList componentes
    */
   handleAddButtonClick() { this.setState({ addButtonClicked: true }); }
 
@@ -85,10 +84,12 @@ class BoardPage extends React.Component {
     return (
       <ul className="inner__list">
         {this.state.addButtonClicked
-          ? <CreateList
+          ? <CreateBoardOrList
+          closeCreateItem={this.handleCloseButtonClick}
           addList={this.addList}
           groupName={this.state.groupName}
           boardId={this.state.selectedBoard._id}
+          buttonText={'Add list'}
           /> : null}
         {lists}
       </ul>
@@ -110,10 +111,11 @@ class BoardPage extends React.Component {
     return (
       <ul className="inner__list">
         {this.state.addButtonClicked
-          ? <CreateBoard
-            closeCreateBoard={this.handleCloseButtonClick}
+          ? <CreateBoardOrList
+            closeCreateItem={this.handleCloseButtonClick}
             addBoard={this.addBoard}
             groupName={this.state.groupName}
+            buttonText={'Add board'}
             /> : null}
         {boards}
       </ul>);
