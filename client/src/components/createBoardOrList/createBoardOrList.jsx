@@ -44,7 +44,7 @@ class CreateBoardOrList extends React.Component {
       <div className="create">
         <h3 className="create__text">{this.props.buttonText}</h3>
         <input className="create__input" onChange={this.handleInputChange}></input>
-        <div className="create__close" onClick={this.props.closeCreateItem}>
+        <div className="create__close" onClick={this.props.handleCloseButtonClick}>
           <Cross width={25} height={25}/>
         </div>
         <div
@@ -58,7 +58,7 @@ class CreateBoardOrList extends React.Component {
 }
 
 CreateBoardOrList.propTypes = {
-  closeCreateItem: PropTypes.func.isRequired,
+  handleCloseButtonClick: PropTypes.func.isRequired,
   addBoard: PropTypes.func,
   groupName: PropTypes.string.isRequired,
   boardId: PropTypes.string,
