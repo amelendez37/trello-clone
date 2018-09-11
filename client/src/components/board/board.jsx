@@ -16,7 +16,7 @@ const boardSource = {
 };
 
 const boardTarget = {
-  hover(props, monitor) {
+  drop(props, monitor) {
     const dragIndex = monitor.getItem().index;
     const hoverIndex = props.index;
 

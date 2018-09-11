@@ -54,7 +54,7 @@ const updateBoardsQuery = async (groupName, updatedBoards) => {
     }
 
     group.boards = updatedBoards;
-    await group.save();
+    return await group.save();
   } catch (err) {
     logger.error(`Error in addGroupQuery - ${err}`);
     throw err;
