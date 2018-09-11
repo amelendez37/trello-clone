@@ -11,6 +11,10 @@
     cursor: pointer;
     transition: all .3s;
 
+    &:last-child {
+      margin-bottom: 3rem;
+    }
+
     &__title {
         word-wrap: break-word;
         padding: 3rem 1rem;

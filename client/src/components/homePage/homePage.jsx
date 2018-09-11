@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import SidebarLeft from './sidebarLeft.jsx';
 import SidebarRight from './sidebarRight.jsx';
@@ -15,10 +18,28 @@ class HomePage extends React.Component {
       view: 'boards', // options: 'boards' or 'lists'
     };
 
+    this.moveBoard = this.moveBoard.bind(this);
     this.manageView = this.manageView.bind(this);
     this.handleBoardClick = this.handleBoardClick.bind(this);
     this.addBoard = this.addBoard.bind(this);
     this.addList = this.addList.bind(this);
+  }
+
+  moveBoard(dragIndex, hoverIndex) {
+    const { groupName } = this.props.location.state.data;
+    const { boards } = this.state;
+
+    const updatedBoards = boards.slice(0);
+    const temp = updatedBoards[dragIndex];
+    updatedBoards[dragIndex] = updatedBoards[hoverIndex];
+    updatedBoards[hoverIndex] = temp;
+
+    this.setState({ boards: updatedBoards }, async () => {
+      await axios.patch(`${process.env.API_URL}/api/group/updateBoards`, {
+        groupName,
+        updatedBoards,
+      });
+    });
   }
 
   manageView() {
@@ -41,12 +62,18 @@ class HomePage extends React.Component {
     });
   }
 
+  /**
+   * Called within CreateBoardOrList component
+   */
   addBoard(board) {
     const { boards } = this.state;
     boards.push(board);
     this.setState({ boards });
   }
 
+  /**
+   * Called within CreateBoardOrList component
+   */
   addList(list) {
     const { lists } = this.state.selectedBoard;
     lists.push(list);
@@ -74,6 +101,7 @@ class HomePage extends React.Component {
              selectedBoard={this.state.selectedBoard}
              boards={this.state.boards}
              handleBoardClick={this.handleBoardClick}
+             moveBoard={this.moveBoard}
             />
           </div>
         </div>
@@ -87,4 +115,4 @@ HomePage.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-export default HomePage;
+export default DragDropContext(HTML5Backend)(HomePage);

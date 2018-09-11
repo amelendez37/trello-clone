@@ -7,7 +7,6 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { input: '' };
-    this.url = process.env.API_URL;
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleExistingClick = this.handleExistingClick.bind(this);
@@ -19,12 +18,12 @@ class LandingPage extends React.Component {
   }
 
   async handleExistingClick() {
-    const res = await axios.get(`${this.url}/api/group/${this.state.input}`);
+    const res = await axios.get(`${process.env.API_URL}/api/group/${this.state.input}`);
     this.redirectToHomePage(res);
   }
 
   async handleNewClick() {
-    const res = await axios.post(`${this.url}/api/group`, {
+    const res = await axios.post(`${process.env.API_URL}/api/group`, {
       groupName: this.state.input,
     });
     this.redirectToHomePage(res);

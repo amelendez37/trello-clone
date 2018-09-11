@@ -7,13 +7,15 @@ import List from '../list/list.jsx';
 const Content = (props) => {
   const renderBoards = () => (
     props.boards.map(
-      board => <Board
+      (board, i) => <Board
                 key={board._id}
                 boardId={board._id}
                 boardName={board.boardName}
                 lists={board.lists}
                 groupName={props.groupName}
                 handleBoardClick={props.handleBoardClick}
+                index={i}
+                moveBoard={props.moveBoard}
                 />,
     )
   );
@@ -44,6 +46,7 @@ Content.propTypes = {
   selectedBoard: PropTypes.object,
   boards: PropTypes.array,
   handleBoardClick: PropTypes.func,
+  moveBoard: PropTypes.func.isRequired,
 };
 
 export default Content;

@@ -45,7 +45,24 @@ const addGroupQuery = async (groupName) => {
   }
 };
 
+const updateBoardsQuery = async (groupName, updatedBoards) => {
+  try {
+    const group = await Group.findOne({ groupName });
+
+    if (!group) {
+      return false;
+    }
+
+    group.boards = updatedBoards;
+    await group.save();
+  } catch (err) {
+    logger.error(`Error in addGroupQuery - ${err}`);
+    throw err;
+  }
+};
+
 module.exports = {
   addGroupQuery,
   findGroupQuery,
+  updateBoardsQuery,
 };

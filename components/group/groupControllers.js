@@ -1,7 +1,9 @@
 const logger = require('../../config/logger');
+const controllerHelper = require('../../helpers/controllerHelper');
 const {
   addGroupQuery,
   findGroupQuery,
+  updateBoardsQuery,
 } = require('./groupDAL');
 
 const findGroupController = async (req, res) => {
@@ -38,7 +40,25 @@ const addGroupController = async (req, res) => {
   }
 };
 
+/**
+ * Updates a group with new boards array
+ * Used for updating order of boards
+ */
+const updateBoardsController = async (req, res) => {
+  const { groupName, updatedBoards } = req.body;
+
+  controllerHelper(
+    res,
+    updateBoardsQuery,
+    200,
+    'Error in updateBoardsController',
+    groupName,
+    updatedBoards,
+  );
+};
+
 module.exports = {
   addGroupController,
   findGroupController,
+  updateBoardsController,
 };
