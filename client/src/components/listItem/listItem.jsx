@@ -81,7 +81,7 @@ class ListItem extends React.Component {
   }
 
   toggleCompleted(e) {
-    if (e.target.dataset.name !== 'bin') {
+    if (['item', 'check', 'text'].includes(e.target.dataset.name)) {
       const {
         groupName,
         boardId,
@@ -108,11 +108,13 @@ class ListItem extends React.Component {
     const opacity = this.props.isDragging ? 0 : 1;
 
     return (
-      <div className={`list-item ${status}`} style={{ opacity }} onClick={this.toggleCompleted}>
-        <div className="checkmark-icon"><Checkmark width={15} height={17} /></div>
-        <p className="list-item__text" data-id="text">{this.props.listItem.text}</p>
+      <div className={`list-item ${status}`} style={{ opacity }} data-name="item" onClick={this.toggleCompleted}>
+        <div className="checkmark-icon" data-name="check">
+          <Checkmark width={15} height={17} />
+        </div>
+        <p className="list-item__text" data-name="text">{this.props.listItem.text}</p>
         <div className="trash-icon" onClick={this.deleteListItem}>
-          <Bin data-name="bin" data-id={this.props.listItem._id} width={20} height={20} />
+          <Bin data-id={this.props.listItem._id} width={20} height={20} />
         </div>
       </div>
     );
