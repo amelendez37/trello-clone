@@ -4,9 +4,9 @@ import axios from 'axios';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import SidebarLeft from './sidebarLeft.jsx';
-import SidebarRight from './sidebarRight.jsx';
-import Content from './content.jsx';
+import SidebarLeft from './sidebarLeft/sidebarLeft.jsx';
+import SidebarRight from './sidebarRight/sidebarRight.jsx';
+import Content from './content/content.jsx';
 import './homePage.scss';
 
 class HomePage extends React.Component {

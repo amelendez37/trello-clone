@@ -3,6 +3,7 @@ const {
   addListQuery,
   deleteListQuery,
   editListQuery,
+  updateListItemsQuery,
 } = require('./listDAL');
 
 const addListController = async (req, res) => {
@@ -53,8 +54,32 @@ const editListController = async (req, res) => {
   );
 };
 
+/**
+ * Updates order of list items within a list
+ */
+const updateListItemsController = async (req, res) => {
+  const {
+    groupName,
+    boardId,
+    listId,
+    updatedListItems,
+  } = req.body;
+
+  controllerHelper(
+    res,
+    updateListItemsQuery,
+    200,
+    'Error in updateListItemsController',
+    groupName,
+    boardId,
+    listId,
+    updatedListItems,
+  );
+};
+
 module.exports = {
   addListController,
   deleteListController,
   editListController,
+  updateListItemsController,
 };

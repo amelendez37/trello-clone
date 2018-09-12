@@ -13,11 +13,37 @@ class List extends React.Component {
       input: '',
     };
 
+    this.moveListItem = this.moveListItem.bind(this);
     this.renderListItems = this.renderListItems.bind(this);
     this.addListItemToState = this.addListItemToState.bind(this);
     this.deleteListItemFromState = this.deleteListItemFromState.bind(this);
     this.handleListItemAdd = this.handleListItemAdd.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  /**
+   * Called within ListItem component
+   */
+  moveListItem(dragIndex, hoverIndex) {
+    const {
+      groupName,
+      boardId,
+      listId,
+    } = this.props;
+
+    const updatedListItems = this.state.listItems.slice(0);
+    const temp = updatedListItems[dragIndex];
+    updatedListItems[dragIndex] = updatedListItems[hoverIndex];
+    updatedListItems[hoverIndex] = temp;
+
+    this.setState({ listItems: updatedListItems }, async () => {
+      await axios.patch(`${process.env.API_URL}/api/list/updateListItems`, {
+        groupName,
+        boardId,
+        listId,
+        updatedListItems,
+      });
+    });
   }
 
   async handleListItemAdd(e) {
@@ -58,13 +84,15 @@ class List extends React.Component {
 
   renderListItems() {
     return this.state.listItems.map(
-      listItem => <ListItem
+      (listItem, i) => <ListItem
                   key={listItem._id}
                   listItem={listItem}
+                  index={i}
                   groupName={this.props.groupName}
                   boardId={this.props.boardId}
                   listId={this.props.listId}
                   deleteListItemFromState={this.deleteListItemFromState}
+                  moveListItem={this.moveListItem}
                   />,
     );
   }

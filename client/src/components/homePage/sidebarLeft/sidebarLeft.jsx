@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CircleLeft from '../../../public/img/circle-left.svg';
+import CircleLeft from '../../../../public/img/circle-left.svg';
 
 const SidebarLeft = props => (
   <div className="inner__sidebar--1">

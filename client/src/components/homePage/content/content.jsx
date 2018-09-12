@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Board from '../board/board.jsx';
-import List from '../list/list.jsx';
+import Board from '../../board/board.jsx';
+import List from '../../list/list.jsx';
 
 const Content = (props) => {
   const renderBoards = () => (
