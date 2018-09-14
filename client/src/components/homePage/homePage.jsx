@@ -85,6 +85,7 @@ class HomePage extends React.Component {
 
     return (
       <div className="container">
+        <h1 className="container__groupname">{groupName}</h1>
         <div className="inner">
           <div className="inner__boards">
             <SidebarLeft manageView={this.manageView} />

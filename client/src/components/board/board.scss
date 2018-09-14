@@ -21,4 +21,8 @@
         color: $color-dark-blue;
         font-weight: 700;
     }
+
+    &:hover {
+        background-color: $color-light-blue;
+    }
 }

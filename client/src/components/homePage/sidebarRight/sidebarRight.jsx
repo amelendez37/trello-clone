@@ -32,7 +32,6 @@ class SidebarRight extends React.Component {
   render() {
     return (
       <div className="inner__sidebar--2">
-        <h1 className="inner__sidebar--2-groupname">{this.props.groupName}</h1>
         {this.props.view === 'lists' ? this.renderAddButton('Add list') : this.renderAddButton('Add board')}
 
         {this.state.addButtonClicked

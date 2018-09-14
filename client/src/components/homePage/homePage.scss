@@ -5,7 +5,7 @@
     
     &__boards {
         display: grid;
-        grid-template-columns: 3.5vw minmax(min-content, 10vw) 1fr;
+        grid-template-columns: 3.5vw 10vw 1fr;
         width: 100%;
         height: 100%;
     }
@@ -39,25 +39,26 @@
             align-items: center;
             background-color: #fff;
 
-            &-groupname {
-                font-size: 2rem;
-                font-weight: 700;
-                color: $color-dark-blue;
-                margin: 1.5rem 0 2.5rem 0;
-            }
-
             &-add-btn {
                 cursor: pointer;
                 height: 6rem;
                 width: 9rem;
                 padding: .5rem;
+                margin: 1.5rem 0;
                 font-size: 2rem;
-                border-radius: 5px;
+                border-radius: 3px;
                 background-color: $color-primary;
                 color: #fff;
                 box-shadow: $tiny-shadow;
+                transition: all .3s;
 
-                &:focus { outline: 0; }
+                &:focus {
+                    outline: 0;
+                }
+
+                &:hover {
+                    background-color: #03B6EF;
+                }
             }
         }
     }
@@ -68,5 +69,19 @@
 
         overflow-y: scroll;
         background-color: $color-secondary;
+    }
+}
+
+.container {
+
+    &__groupname {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $color-dark-blue;
+        padding: 1rem 0;
+        text-align: center;
+        word-break: break-all;
+        text-shadow: $tiny-shadow;
+        letter-spacing: 1px;
     }
 }
