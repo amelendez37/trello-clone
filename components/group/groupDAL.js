@@ -3,11 +3,6 @@ const logger = require('../../config/logger');
 
 const Group = mongoose.model('Group');
 
-/**
- * Finds a group
- * @param groupName - String
- * @returns - Group object or false
- */
 const findGroupQuery = async (groupName) => {
   try {
     const group = await Group.findOne({ groupName });
@@ -23,11 +18,6 @@ const findGroupQuery = async (groupName) => {
   }
 };
 
-/**
- * Saves a new group into database if they do not already exist
- * @param groupName - String
- * @returns - false if group already exists, otherwise new Group object
- */
 const addGroupQuery = async (groupName) => {
   try {
     const group = await Group.findOne({ groupName });

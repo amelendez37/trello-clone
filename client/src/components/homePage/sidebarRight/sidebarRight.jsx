@@ -18,6 +18,7 @@ class SidebarRight extends React.Component {
 
   /**
    * Renders a button to either add a new board or list
+   * @param {String} innerHTML
    */
   renderAddButton(innerHTML) {
     return (

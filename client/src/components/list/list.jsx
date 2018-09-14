@@ -23,6 +23,8 @@ class List extends React.Component {
 
   /**
    * Called within ListItem component
+   * @param {Number} dragIndex
+   * @param {Number} hoverIndex
    */
   moveListItem(dragIndex, hoverIndex) {
     const {

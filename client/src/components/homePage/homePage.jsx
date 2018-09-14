@@ -52,6 +52,7 @@ class HomePage extends React.Component {
 
   /**
    * Called within Board component
+   * @param {Object} event
    */
   handleBoardClick(e) {
     const { id } = e.target.dataset;
@@ -64,6 +65,7 @@ class HomePage extends React.Component {
 
   /**
    * Called within CreateBoardOrList component
+   * @param {Object} board
    */
   addBoard(board) {
     const { boards } = this.state;
@@ -73,6 +75,7 @@ class HomePage extends React.Component {
 
   /**
    * Called within CreateBoardOrList component
+   * @param {Object} list
    */
   addList(list) {
     const { lists } = this.state.selectedBoard;
