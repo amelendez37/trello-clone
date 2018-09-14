@@ -1,3 +1,4 @@
+const groupNameValidator = require('../../services/groupName-validator.js');
 const {
   findGroupController,
   addGroupController,
@@ -5,7 +6,7 @@ const {
 } = require('./groupControllers');
 
 module.exports = (router) => {
-  router.get('/group/:groupName', findGroupController);
-  router.post('/group', addGroupController);
+  router.get('/group/:groupName', groupNameValidator, findGroupController);
+  router.post('/group', groupNameValidator, addGroupController);
   router.patch('/group/updateBoards', updateBoardsController);
 };

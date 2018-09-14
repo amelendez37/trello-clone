@@ -1,4 +1,4 @@
-const controllerHelper = require('../../helpers/controllerHelper');
+const controllerHelper = require('../../services/controllerHelper');
 const {
   addListItemQuery,
   deleteListItemQuery,

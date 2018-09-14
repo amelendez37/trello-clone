@@ -1,5 +1,5 @@
 const logger = require('../../config/logger');
-const controllerHelper = require('../../helpers/controllerHelper');
+const controllerHelper = require('../../services/controllerHelper');
 const {
   addGroupQuery,
   findGroupQuery,
