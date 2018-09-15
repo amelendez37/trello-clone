@@ -24,7 +24,6 @@ const boardTarget = {
     if (dragIndex === hoverIndex) {
       return;
     }
-
     // Move the board
     props.moveBoard(dragIndex, hoverIndex);
     // Mutating monitor for improved performance
