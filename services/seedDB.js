@@ -7,16 +7,30 @@ const Group = mongoose.model('Group');
  */
 module.exports = async () => {
   const newGroup = {
-    groupName: 'test_group_1',
+    groupName: 'testGroup1',
     boards: [
       {
-        boardName: 'test_board_1',
+        boardName: 'testBoard1',
         lists: [
           {
-            listName: 'test_list_1',
+            listName: 'testList1',
             listItems: [
               {
-                text: 'test_listItem_1',
+                text: 'testListItem1',
+                completed: false,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        boardName: 'testBoard2',
+        lists: [
+          {
+            listName: 'testList2',
+            listItems: [
+              {
+                text: 'testListItem2',
                 completed: false,
               },
             ],
