@@ -1,7 +1,7 @@
 // required environment variables
 [
-  'PORT',
   'NODE_ENV',
+  'PORT',
   'MONGO_URL',
   'MONGO_URL_TEST',
 ].forEach((name) => {
@@ -10,7 +10,7 @@
   }
 });
 
-const config = {
+module.exports = {
   env: process.env.NODE_ENV,
   serverPort: Number(process.env.PORT),
   mongoUrl: process.env.NODE_ENV !== 'production'
@@ -18,5 +18,3 @@ const config = {
   baseUrl: process.env.NODE_ENV !== 'production'
     ? `http://localhost:${process.env.PORT}` : `${process.env.BASE_URL}:${process.env.PORT}`,
 };
-
-module.exports = config;

@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const { mongoUrl, serverPort } = require('./config/config');
 const logger = require('./config/logger');
@@ -23,7 +24,9 @@ db.once('open', () => logger.info('Successfully connected to mongoDB'));
 const app = express();
 const port = serverPort || 3000;
 
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, './client/public')));
 app.use('/api', routes);
 

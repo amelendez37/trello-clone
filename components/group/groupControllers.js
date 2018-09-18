@@ -13,7 +13,7 @@ const findGroupController = async (req, res) => {
     const result = await findGroupQuery(groupName);
 
     if (result) {
-      return res.status(200).send(result);
+      return res.status(200).json(result);
     }
 
     return res.status(404).send();
@@ -27,10 +27,10 @@ const addGroupController = async (req, res) => {
   const { groupName } = req.body;
 
   try {
-    const isNewGroup = await addGroupQuery(groupName);
+    const newGroup = await addGroupQuery(groupName);
 
-    if (isNewGroup) {
-      return res.status(201).send(isNewGroup);
+    if (newGroup) {
+      return res.status(201).json(newGroup);
     }
 
     return res.status(404).send();
