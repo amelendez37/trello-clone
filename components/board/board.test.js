@@ -32,4 +32,23 @@ describe('Board routes', () => {
     // check 3rd board due to 2 boards already existing from seed data
     expect(body.boards[2].boardName).toBe('newTestBoard');
   });
+
+  it('DELETE /board should delete a board', async () => {
+    const res = await request(instance.server).get('/api/group/testGroup1');
+    const boardId = res.body.boards[0]._id;
+    // delete first board
+    const deleteRes = await request(instance.server)
+      .delete('/api/board')
+      .send({
+        groupName: 'testGroup1',
+        boardId,
+      });
+    
+    const updatedRes = await request(instance.server).get('/api/group/testGroup1');
+    const updatedBoard = updatedRes.body.boards[0];
+
+    expect(deleteRes.status).toBe(200);
+    // board at position 0 should now be testBoard2 since testBoard1 was deleted
+    expect(updatedBoard.boardName).toBe('testBoard2');
+  });
 });
