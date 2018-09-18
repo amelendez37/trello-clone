@@ -12,7 +12,9 @@ describe('Group routes', () => {
     await require('../../services/seedDB')();
   });
 
-  afterEach(() => instance.server.close());
+  afterEach(() => {
+    instance.server.close();
+  });
 
   it('GET /group/:groupName should return all data associated with a group', async () => {
     const res = await request(instance.server).get('/api/group/testGroup1');
@@ -47,13 +49,14 @@ describe('Group routes', () => {
   });
 
   it('PATCH /group/updateBoards should update order of boards', async () => {
+    // get seed data
     const res = await request(instance.server).get('/api/group/testGroup1');
     let temp;
-
+    // swap board order
     temp = res.body.boards[0];
     res.body.boards[0] = res.body.boards[1];
     res.body.boards[1] = temp;
-
+    // update
     await request(instance.server)
       .patch('/api/group/updateBoards')
       .send({

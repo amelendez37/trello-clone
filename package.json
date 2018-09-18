@@ -6,7 +6,7 @@
     "scripts": {
         "start:server": "nodemon index.js",
         "posttest": "eslint --ignore-path .gitignore .",
-        "test": "jest"
+        "test": "jest --runInBand --forceExit --detectOpenHandles"
     },
     "repository": {
         "type": "git",
