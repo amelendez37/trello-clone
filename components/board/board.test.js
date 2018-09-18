@@ -51,4 +51,26 @@ describe('Board routes', () => {
     // board at position 0 should now be testBoard2 since testBoard1 was deleted
     expect(updatedBoard.boardName).toBe('testBoard2');
   });
+
+  it('PATCH /board should edit a board\'s name', async () => {
+    const res = await request(instance.server).get('/api/group/testGroup1');
+    const group = res.body;
+    const boardToEdit = res.body.boards[0];
+
+    expect(boardToEdit.boardName).toBe('testBoard1');
+
+    const editRes = await request(instance.server)
+      .patch('/api/board')
+      .send({
+        groupName: group.groupName,
+        boardId: boardToEdit._id,
+        newBoardName: 'editedBoardName',
+      });
+
+    const updatedRes = await request(instance.server).get('/api/group/testGroup1');
+    const updatedBoard = updatedRes.body.boards[0];
+    
+    expect(editRes.status).toBe(200);
+    expect(updatedBoard.boardName).toBe('editedBoardName');
+  });
 });
