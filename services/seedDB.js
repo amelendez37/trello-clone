@@ -19,6 +19,10 @@ module.exports = async () => {
                 text: 'testListItem1',
                 completed: false,
               },
+              {
+                text: 'testListItem2',
+                completed: false,
+              },
             ],
           },
         ],

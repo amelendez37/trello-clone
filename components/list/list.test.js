@@ -76,4 +76,33 @@ describe('List routes', () => {
     expect(patchRes.status).toBe(200);
     expect(listName).toBe('newListName');
   });
+
+  it('PATCH /list/updateListItems should update order of list items', async () => {
+    const res = await request(instance.server).get('/api/group/testGroup1');
+    const group = res.body;
+    const { text } = res.body.boards[0].lists[0].listItems[0];
+    const { listItems } = group.boards[0].lists[0];
+
+    expect(text).toBe('testListItem1');
+
+    // swap list items
+    const temp = listItems[0];
+    listItems[0] = listItems[1];
+    listItems[1] = temp;
+
+    const patchRes = await request(instance.server)
+                      .patch('/api/list/updateListItems')
+                      .send({
+                        groupName: group.groupName,
+                        boardId: group.boards[0]._id,
+                        listId: group.boards[0].lists[0]._id,
+                        updatedListItems: listItems,
+                      });
+    
+    const updatedRes = await request(instance.server).get('/api/group/testGroup1');
+    const updatedText = res.body.boards[0].lists[0].listItems[0].text;
+
+    expect(patchRes.status).toBe(200);
+    expect(updatedText).toBe('testListItem2');
+  });
 });
