@@ -12,9 +12,7 @@ describe('List routes', () => {
     await require('../../services/seedDB')();
   });
 
-  afterEach(() => {
-    instance.server.close();
-  });
+  afterEach(() => instance.server.close());
 
   it('POST /list should add new list to a board', async () => {
     const res = await request(instance.server).get('/api/group/testGroup1');

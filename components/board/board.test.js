@@ -12,9 +12,7 @@ describe('Board routes', () => {
     await require('../../services/seedDB')();
   });
 
-  afterEach(() => {
-    instance.server.close();
-  });
+  afterEach(() => instance.server.close());
 
   it('POST /board should add a new board to a group', async () => {
     const postRes = await request(instance.server)

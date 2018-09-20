@@ -12,9 +12,7 @@ describe('Group routes', () => {
     await require('../../services/seedDB')();
   });
 
-  afterEach(() => {
-    instance.server.close();
-  });
+  afterEach(() => instance.server.close());
 
   it('GET /group/:groupName should return all data associated with a group', async () => {
     const res = await request(instance.server).get('/api/group/testGroup1');
