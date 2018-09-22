@@ -42,9 +42,6 @@
             "\\.(css|less|sass|scss)$": "<rootDir>/config/__mocks__/styleMock.js",
             "\\.(gif|ttf|eot|svg)$": "<rootDir>/config/__mocks__/fileMock.js"
         },
-        "collectCoverageFrom": [
-            "**/client/src/**/*.js",
-            "**/components/**/*.js"
-        ]
+        "collectCoverageFrom": ["**/components/**/*.js"]
     }
 }
