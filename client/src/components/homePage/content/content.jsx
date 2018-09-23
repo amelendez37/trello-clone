@@ -8,15 +8,15 @@ const Content = (props) => {
   const renderBoards = () => (
     props.boards.map(
       (board, i) => <Board
-                key={board._id}
-                boardId={board._id}
-                boardName={board.boardName}
-                lists={board.lists}
-                groupName={props.groupName}
-                handleBoardClick={props.handleBoardClick}
-                index={i}
-                moveBoard={props.moveBoard}
-                />,
+                     key={board._id}
+                     boardId={board._id}
+                     boardName={board.boardName}
+                     lists={board.lists}
+                     groupName={props.groupName}
+                     handleBoardClick={props.handleBoardClick}
+                     index={i}
+                     moveBoard={props.moveBoard}
+                    />,
     )
   );
 
@@ -29,7 +29,7 @@ const Content = (props) => {
                listId={list._id}
                listName={list.listName}
                listItems={list.listItems}
-               />,
+              />,
     )
   );
 
@@ -46,7 +46,7 @@ Content.propTypes = {
   selectedBoard: PropTypes.object,
   boards: PropTypes.array,
   handleBoardClick: PropTypes.func,
-  moveBoard: PropTypes.func.isRequired,
+  moveBoard: PropTypes.func,
 };
 
 export default Content;
