@@ -120,4 +120,5 @@ HomePage.propTypes = {
 };
 
 export default DragDropContext(HTML5Backend)(HomePage);
+// export non decorated component for tests
 export const HomePageNotDecorated = HomePage;
