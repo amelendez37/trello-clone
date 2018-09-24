@@ -87,3 +87,4 @@ export default flow(
   DragSource(ItemTypes.BOARD, boardSource, collectSource),
   DropTarget(ItemTypes.BOARD, boardTarget, collectTarget),
 )(Board);
+export const BoardNotDecorated = Board;

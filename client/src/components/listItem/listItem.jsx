@@ -139,7 +139,7 @@ ListItem.propTypes = {
   boardId: PropTypes.string.isRequired,
   listId: PropTypes.string.isRequired,
   deleteListItemFromState: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired,
+  isDragging: PropTypes.bool,
   connectDragSource: PropTypes.func.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
 };
