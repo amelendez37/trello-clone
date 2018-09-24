@@ -148,3 +148,4 @@ export default flow(
   DragSource(ItemTypes.LIST_ITEM, listItemSource, collectSourceListItem),
   DropTarget(ItemTypes.LIST_ITEM, listItemTarget, collectTargetListItem),
 )(ListItem);
+export const ListItemNotDecorated = ListItem;
