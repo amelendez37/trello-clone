@@ -8,11 +8,11 @@ const { mongoUrl, serverPort } = require('./config/config');
 const logger = require('./config/logger');
 
 // models
-require('./components/board/boardModel');
-require('./components/list/listModel');
-require('./components/listItem/listItemModel');
-require('./components/group/groupModel');
-const routes = require('./components');
+require('./server_components/board/boardModel');
+require('./server_components/list/listModel');
+require('./server_components/listItem/listItemModel');
+require('./server_components/group/groupModel');
+const routes = require('./server_components');
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true });
 

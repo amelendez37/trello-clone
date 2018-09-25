@@ -6,9 +6,8 @@ module.exports = () => {
   const env = dotenv.config().parsed;
 
   return {
-    mode: 'development',
+    mode: 'production',
     entry: ['@babel/polyfill', './src/index'],
-    devtool: 'cheap-eval-source-map', // shows pre-bundled code when viewing an error
     output: {
       path: resolve(__dirname, 'public'),
       filename: 'bundle.js',

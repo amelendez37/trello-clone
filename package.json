@@ -6,7 +6,9 @@
     "scripts": {
         "start:server": "nodemon index.js",
         "posttest": "eslint --ignore-path .gitignore .",
-        "test": "jest --runInBand --forceExit --detectOpenHandles"
+        "test:client": "jest ./client/src/components",
+        "test:server": "jest ./server_components --runInBand --forceExit --detectOpenHandles",
+        "test": "npm run test:client && npm run test:server"
     },
     "repository": {
         "type": "git",
@@ -42,6 +44,6 @@
             "\\.(css|less|sass|scss)$": "<rootDir>/config/__mocks__/styleMock.js",
             "\\.(gif|ttf|eot|svg)$": "<rootDir>/config/__mocks__/fileMock.js"
         },
-        "collectCoverageFrom": ["**/components/**/*.js"]
+        "setupTestFrameworkScriptFile": "<rootDir>/client/src/setupTests.js"
     }
 }

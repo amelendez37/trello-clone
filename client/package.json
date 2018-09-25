@@ -2,8 +2,7 @@
     "name": "client",
     "version": "1.0.0",
     "scripts": {
-        "build:dev": "webpack --watch",
-        "test": "jest"
+        "build": "webpack"
     },
     "dependencies": {
         "@babel/polyfill": "^7.0.0",
@@ -39,10 +38,6 @@
         "moduleNameMapper": {
             "\\.(css|less|sass|scss)$": "<rootDir>/../config/__mocks__/styleMock.js",
             "\\.(gif|ttf|eot|svg)$": "<rootDir>/../config/__mocks__/fileMock.js"
-        },
-        "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
-        "collectCoverageFrom": [
-            "**/client/src/**/*.js"
-        ]
+        }
     }
 }
