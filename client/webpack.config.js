@@ -17,11 +17,12 @@ module.exports = () => {
         {
           enforce: 'pre', // run before babel
           test: /\.jsx?$/,
+          exclude: /node_modules/,
           use: ['eslint-loader'],
-          exclude: '/node-modules/',
         },
         {
           test: /\.scss$/,
+          exclude: /node_modules/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
@@ -31,6 +32,7 @@ module.exports = () => {
         },
         {
           test: /\.svg$/,
+          exclude: /node_modules/,
           use: ['react-svg-loader'],
         },
       ],
