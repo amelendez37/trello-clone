@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ListItemNotDecorated } from './listItem.jsx';
-// import ListItem from './listItem.jsx';
 
 const props = {
   groupName: 'test group',

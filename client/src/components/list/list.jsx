@@ -87,15 +87,15 @@ class List extends React.Component {
   renderListItems() {
     return this.state.listItems.map(
       (listItem, i) => <ListItem
-                  key={listItem._id}
-                  listItem={listItem}
-                  index={i}
-                  groupName={this.props.groupName}
-                  boardId={this.props.boardId}
-                  listId={this.props.listId}
-                  deleteListItemFromState={this.deleteListItemFromState}
-                  moveListItem={this.moveListItem}
-                  />,
+                        key={listItem._id}
+                        listItem={listItem}
+                        index={i}
+                        groupName={this.props.groupName}
+                        boardId={this.props.boardId}
+                        listId={this.props.listId}
+                        deleteListItemFromState={this.deleteListItemFromState}
+                        moveListItem={this.moveListItem}
+                       />,
     );
   }
 
@@ -121,7 +121,7 @@ List.propTypes = {
   groupName: PropTypes.string.isRequired,
   boardId: PropTypes.string.isRequired,
   listId: PropTypes.string.isRequired,
-  listName: PropTypes.string,
+  listName: PropTypes.string.isRequired,
   listItems: PropTypes.array.isRequired,
 };
 
