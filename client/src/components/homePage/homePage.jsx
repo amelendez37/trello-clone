@@ -24,6 +24,7 @@ class HomePage extends React.Component {
     this.addBoard = this.addBoard.bind(this);
     this.addList = this.addList.bind(this);
     this.deleteListFromState = this.deleteListFromState.bind(this);
+    this.deleteBoardFromState = this.deleteBoardFromState.bind(this);
   }
 
   moveBoard(dragIndex, hoverIndex) {
@@ -56,12 +57,14 @@ class HomePage extends React.Component {
    * @param {Object} event
    */
   handleBoardClick(e) {
-    const { id } = e.target.dataset;
-    const board = this.state.boards.find(b => b._id === id);
-    this.setState({
-      selectedBoard: board,
-      view: 'lists',
-    });
+    if (['title', 'card'].includes(e.target.dataset.name)) {
+      const { id } = e.target.dataset;
+      const board = this.state.boards.find(b => b._id === id);
+      this.setState({
+        selectedBoard: board,
+        view: 'lists',
+      });
+    }
   }
 
   /**
@@ -94,6 +97,16 @@ class HomePage extends React.Component {
     this.setState({ selectedBoard });
   }
 
+  /**
+   * Called within Board component
+   * @param {boardId} boardId
+   */
+  deleteBoardFromState(boardId) {
+    const { boards } = this.state;
+    const updatedBoards = boards.filter(board => board._id !== boardId);
+    this.setState({ boards: updatedBoards });
+  }
+
   render() {
     const { groupName } = this.props.location.state.data;
 
@@ -118,6 +131,7 @@ class HomePage extends React.Component {
              handleBoardClick={this.handleBoardClick}
              moveBoard={this.moveBoard}
              deleteListFromState={this.deleteListFromState}
+             deleteBoardFromState={this.deleteBoardFromState}
             />
           </div>
         </div>

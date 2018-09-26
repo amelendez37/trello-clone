@@ -16,6 +16,7 @@ const Content = (props) => {
                      handleBoardClick={props.handleBoardClick}
                      index={i}
                      moveBoard={props.moveBoard}
+                     deleteBoardFromState={props.deleteBoardFromState}
                     />,
     )
   );
@@ -49,6 +50,7 @@ Content.propTypes = {
   handleBoardClick: PropTypes.func,
   moveBoard: PropTypes.func,
   deleteListFromState: PropTypes.func,
+  deleteBoardFromState: PropTypes.func,
 };
 
 export default Content;

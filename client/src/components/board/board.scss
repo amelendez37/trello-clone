@@ -22,6 +22,11 @@
         font-weight: 700;
     }
 
+    &__delete {
+        position: absolute;
+        fill: $color-light-red;
+    }
+
     &:hover {
         background-color: $color-light-blue;
     }

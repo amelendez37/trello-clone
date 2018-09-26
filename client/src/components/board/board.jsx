@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash.flow';
 
 import ItemTypes from '../../itemTypes';
+import Cross from '../../../public/img/cross.svg';
 import './board.scss';
 
 const boardSource = {
@@ -51,6 +53,24 @@ class Board extends React.Component {
       boardName: this.props.boardName || '',
       lists: this.props.lists || [],
     };
+
+    this.deleteBoard = this.deleteBoard.bind(this);
+  }
+
+  async deleteBoard() {
+    const {
+      groupName,
+      boardId,
+    } = this.props;
+
+    await axios.delete(`${process.env.API_URL}/api/board`, {
+      data: {
+        groupName,
+        boardId,
+      },
+    });
+
+    this.props.deleteBoardFromState(boardId);
   }
 
   render() {
@@ -63,8 +83,11 @@ class Board extends React.Component {
 
     return connectDragSource(
       connectDropTarget(
-        <div className="board" style={{ opacity }} onClick={this.props.handleBoardClick}>
-          <h2 className="board__title" data-id={this.props.boardId}>{this.state.boardName}</h2>
+        <div className="board" data-name="card" style={{ opacity }} onClick={this.props.handleBoardClick}>
+          <div className="board__delete" onClick={this.deleteBoard}>
+            <Cross width={25} height={25}/>
+          </div>
+          <h2 className="board__title" data-id={this.props.boardId} data-name="title">{this.state.boardName}</h2>
         </div>,
       ),
     );
@@ -81,6 +104,7 @@ Board.propTypes = {
   connectDropTarget: PropTypes.func.isRequired,
   isDragging: PropTypes.bool,
   moveBoard: PropTypes.func.isRequired,
+  deleteBoardFromState: PropTypes.func.isRequired,
 };
 
 export default flow(
