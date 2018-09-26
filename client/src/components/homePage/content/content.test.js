@@ -4,6 +4,7 @@ import Content from './content.jsx';
 
 const props = {
   groupName: 'test group',
+  deleteListFromState: () => {},
 };
 
 const exampleBoard = {

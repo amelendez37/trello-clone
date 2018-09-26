@@ -14,6 +14,7 @@ const props = {
       completed: false,
     },
   ],
+  deleteListFromState: () => {},
 };
 
 test('should change component state based on input change', () => {
@@ -31,5 +32,10 @@ test('should call handleListItemAdd on key press', () => {
   expect(spy).toHaveBeenCalledTimes(1);
 });
 
-test('should delete a list when delete icon clicked', () => {
+test('should call deleteList when delete icon clicked', () => {
+  const spyOn = jest.spyOn(List.prototype, 'deleteList');
+  const component = shallow(<List {...props} />);
+  component.find('.list__delete').simulate('click');
+
+  expect(spyOn).toHaveBeenCalledTimes(1);
 });
