@@ -37,13 +37,13 @@ class SidebarRight extends React.Component {
 
         {this.state.addButtonClicked
           ? <CreateBoardOrList
-          handleCloseButtonClick={this.handleCloseButtonClick}
-          addList={this.props.addList}
-          addBoard={this.props.addBoard}
-          groupName={this.props.groupName}
-          boardId={this.props.selectedBoard ? this.props.selectedBoard._id : null}
-          buttonText={this.props.view === 'lists' ? 'Add list' : 'Add board'}
-          /> : null}
+             handleCloseButtonClick={this.handleCloseButtonClick}
+             addList={this.props.addList}
+             addBoard={this.props.addBoard}
+             groupName={this.props.groupName}
+             boardId={this.props.selectedBoard ? this.props.selectedBoard._id : null}
+             buttonText={this.props.view === 'lists' ? 'Add list' : 'Add board'}
+            /> : null}
       </div>
     );
   }

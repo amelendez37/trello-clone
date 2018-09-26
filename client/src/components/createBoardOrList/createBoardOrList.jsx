@@ -21,22 +21,26 @@ class CreateBoardOrList extends React.Component {
   }
 
   async handleAddBoardClick() {
-    const res = await axios.post(`${process.env.API_URL}/api/board`, {
-      groupName: this.props.groupName,
-      boardName: this.state.title,
-    });
+    if (this.state.title) {
+      const res = await axios.post(`${process.env.API_URL}/api/board`, {
+        groupName: this.props.groupName,
+        boardName: this.state.title,
+      });
 
-    this.props.addBoard(res.data);
+      this.props.addBoard(res.data);
+    }
   }
 
   async handleAddListClick() {
-    const res = await axios.post(`${process.env.API_URL}/api/list`, {
-      groupName: this.props.groupName,
-      boardId: this.props.boardId,
-      listName: this.state.title,
-    });
+    if (this.state.title) {
+      const res = await axios.post(`${process.env.API_URL}/api/list`, {
+        groupName: this.props.groupName,
+        boardId: this.props.boardId,
+        listName: this.state.title,
+      });
 
-    this.props.addList(res.data);
+      this.props.addList(res.data);
+    }
   }
 
   render() {

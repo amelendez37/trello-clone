@@ -23,6 +23,7 @@ class HomePage extends React.Component {
     this.handleBoardClick = this.handleBoardClick.bind(this);
     this.addBoard = this.addBoard.bind(this);
     this.addList = this.addList.bind(this);
+    this.deleteListFromState = this.deleteListFromState.bind(this);
   }
 
   moveBoard(dragIndex, hoverIndex) {
@@ -83,6 +84,16 @@ class HomePage extends React.Component {
     this.setState({ lists });
   }
 
+  /**
+   * Called within List component
+   * @param {String} listId
+   */
+  deleteListFromState(listId) {
+    const { selectedBoard } = this.state;
+    selectedBoard.lists = selectedBoard.lists.filter(list => list._id !== listId);
+    this.setState({ selectedBoard });
+  }
+
   render() {
     const { groupName } = this.props.location.state.data;
 
@@ -106,6 +117,7 @@ class HomePage extends React.Component {
              boards={this.state.boards}
              handleBoardClick={this.handleBoardClick}
              moveBoard={this.moveBoard}
+             deleteListFromState={this.deleteListFromState}
             />
           </div>
         </div>

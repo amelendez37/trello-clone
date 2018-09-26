@@ -4,8 +4,9 @@
     "description": "Track projects and tasks",
     "main": "index.js",
     "scripts": {
-        "start": "npm-run-all build start:server open",
+        "start": "npm-run-all build start:server",
         "build": "cd client && webpack",
+        "build:dev": "cd client && webpack --watch --mode=development",
         "start:server": "nodemon index.js",
         "posttest": "eslint --ignore-path .gitignore .",
         "test:client": "jest ./client/src/components",

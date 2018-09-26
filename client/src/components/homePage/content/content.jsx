@@ -29,6 +29,7 @@ const Content = (props) => {
                listId={list._id}
                listName={list.listName}
                listItems={list.listItems}
+               deleteListFromState={props.deleteListFromState}
               />,
     )
   );
@@ -47,6 +48,7 @@ Content.propTypes = {
   boards: PropTypes.array,
   handleBoardClick: PropTypes.func,
   moveBoard: PropTypes.func,
+  deleteListFromState: PropTypes.func,
 };
 
 export default Content;

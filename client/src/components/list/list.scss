@@ -1,6 +1,7 @@
 @import '../../../public/styles/variables.scss';
 
 .list {
+    position: relative;
     background-color: #fff;
     display: inline-block;
     width: 27rem;
@@ -17,6 +18,14 @@
         padding-bottom: 1rem;
         color: $color-dark-blue;
         font-weight: 700;
+    }
+
+    &__delete {
+        position: absolute;
+        fill: $color-light-red;
+        left: .5rem;
+        top: .5rem;
+        cursor: pointer;
     }
 
     &__input {

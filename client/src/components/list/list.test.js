@@ -30,3 +30,6 @@ test('should call handleListItemAdd on key press', () => {
 
   expect(spy).toHaveBeenCalledTimes(1);
 });
+
+test('should delete a list when delete icon clicked', () => {
+});

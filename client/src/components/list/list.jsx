@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import ListItem from '../listItem/listItem.jsx';
+import Cross from '../../../public/img/cross.svg';
 import './list.scss';
 
 class List extends React.Component {
@@ -19,6 +20,7 @@ class List extends React.Component {
     this.deleteListItemFromState = this.deleteListItemFromState.bind(this);
     this.handleListItemAdd = this.handleListItemAdd.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.deleteList = this.deleteList.bind(this);
   }
 
   /**
@@ -49,7 +51,7 @@ class List extends React.Component {
   }
 
   async handleListItemAdd(e) {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && this.state.input) {
       e.target.value = '';
       const {
         groupName,
@@ -80,6 +82,24 @@ class List extends React.Component {
     this.setState({ listItems });
   }
 
+  async deleteList() {
+    const {
+      groupName,
+      boardId,
+      listId,
+    } = this.props;
+
+    await axios.delete(`${process.env.API_URL}/api/list`, {
+      data: {
+        groupName,
+        boardId,
+        listId,
+      },
+    });
+
+    this.props.deleteListFromState(listId);
+  }
+
   handleInputChange(e) {
     this.setState({ input: e.target.value });
   }
@@ -103,6 +123,9 @@ class List extends React.Component {
     return (
       <div className="list">
         <h2 className="list__title">{this.props.listName}</h2>
+        <div className="list__delete" onClick={this.deleteList}>
+          <Cross width={25} height={25}/>
+        </div>
         <input className="list__input"
         placeholder="Add task"
         onChange={this.handleInputChange}
@@ -123,6 +146,7 @@ List.propTypes = {
   listId: PropTypes.string.isRequired,
   listName: PropTypes.string.isRequired,
   listItems: PropTypes.array.isRequired,
+  deleteListFromState: PropTypes.func.isRequired,
 };
 
 export default List;
