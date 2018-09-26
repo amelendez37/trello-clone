@@ -4,7 +4,7 @@ import Content from './content.jsx';
 
 const props = {
   groupName: 'test group',
-  deleteListFromState: () => {},
+  deleteListFromState: jest.fn(),
 };
 
 const exampleBoard = {

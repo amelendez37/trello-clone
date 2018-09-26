@@ -10,9 +10,11 @@ const props = {
   connectDragSource: el => el,
   connectDropTarget: el => el,
   moveBoard: jest.fn(),
+  deleteBoardFromState: jest.fn(),
+  handleBoardClick: jest.fn(),
 };
 
-test('Should call handleBoardClick when clicked', () => {
+test('should call handleBoardClick when clicked', () => {
   const mock = jest.fn();
   const allProps = Object.assign({}, props, {
     handleBoardClick: mock,
@@ -21,4 +23,12 @@ test('Should call handleBoardClick when clicked', () => {
   component.find('.board').simulate('click');
 
   expect(mock).toHaveBeenCalledTimes(1);
+});
+
+test('should call deleteBoard when clicked', () => {
+  const spy = jest.spyOn(BoardNotDecorated.prototype, 'deleteBoard');
+  const component = shallow(<BoardNotDecorated {...props} />);
+  component.find('.board__delete').simulate('click');
+
+  expect(spy).toHaveBeenCalledTimes(1);
 });

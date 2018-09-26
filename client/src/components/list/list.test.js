@@ -14,7 +14,7 @@ const props = {
       completed: false,
     },
   ],
-  deleteListFromState: () => {},
+  deleteListFromState: jest.fn(),
 };
 
 test('should change component state based on input change', () => {

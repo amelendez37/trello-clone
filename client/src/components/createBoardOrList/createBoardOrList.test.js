@@ -5,7 +5,7 @@ import CreateBoardOrList from './createBoardOrList.jsx';
 const props = {
   groupName: 'test group',
   buttonText: 'Add board',
-  handleCloseButtonClick: () => {},
+  handleCloseButtonClick: jest.fn(),
 };
 
 test('Should call handleInputChange when change event occurs on input', () => {
