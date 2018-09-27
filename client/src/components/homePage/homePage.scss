@@ -66,6 +66,7 @@
     &__list {
         grid-column: 3 / -1;
         grid-row: 1 / -1;
+        position: relative;
 
         overflow-y: scroll;
         background-color: $color-secondary;
@@ -106,22 +107,28 @@
 }
 
 // board/list cards animations
+.card-animate-appear {
+    transform: scale(0);
+}
+
+.card-animate-appear-active {
+    transform: scale(1);
+    transition: all 225ms ease-in;
+}
+
 .card-animate-enter {
     transform: scale(0);
-    opacity: 1;
 }
   
 .card-animate-enter-active {
     transform: scale(1);
-    opacity: 1;
-    transition: all 150ms ease-in;
+    transition: all 225ms ease-in;
 }
 
 .card-animate-exit {
-    opacity: 1;
+    display: none;
 }
 
 .card-animate-exit-active {
-    opacity: 0;
-    transition: all 150ms ease-in;
+    display: none;
 }

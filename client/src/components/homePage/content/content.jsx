@@ -13,10 +13,12 @@ const Content = (props) => {
       ({ _id, boardName, lists }, i) => (
         <CSSTransition
           key={_id}
-          timeout={150}
+          in={true}
+          timeout={{ enter: 225 }}
+          appear={true}
           classNames="card-animate"
         >
-          <TransitionWrapper>
+          <TransitionWrapper classes="board-wrapper">
             <Board
               key={_id}
               boardId={_id}
@@ -39,7 +41,7 @@ const Content = (props) => {
       ({ _id, listName, listItems }) => (
         <CSSTransition
           key={_id}
-          timeout={150}
+          timeout={{ enter: 225 }}
           classNames="card-animate"
         >
           <List

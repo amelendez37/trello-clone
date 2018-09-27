@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import ListItem from '../listItem/listItem.jsx';
 import Cross from '../../../public/img/cross.svg';
+import TransitionWrapper from '../transitionWrapper/transitionWrapper.jsx';
 import './list.scss';
 
 class List extends React.Component {
@@ -106,16 +108,26 @@ class List extends React.Component {
 
   renderListItems() {
     return this.state.listItems.map(
-      (listItem, i) => <ListItem
-                        key={listItem._id}
-                        listItem={listItem}
-                        index={i}
-                        groupName={this.props.groupName}
-                        boardId={this.props.boardId}
-                        listId={this.props.listId}
-                        deleteListItemFromState={this.deleteListItemFromState}
-                        moveListItem={this.moveListItem}
-                       />,
+      (listItem, i) => (
+      <CSSTransition
+        key={listItem._id}
+        timeout={{ enter: 225 }}
+        classNames="card-animate"
+      >
+        <TransitionWrapper classes="list-wrapper">
+          <ListItem
+            key={listItem._id}
+            listItem={listItem}
+            index={i}
+            groupName={this.props.groupName}
+            boardId={this.props.boardId}
+            listId={this.props.listId}
+            deleteListItemFromState={this.deleteListItemFromState}
+            moveListItem={this.moveListItem}
+          />
+        </TransitionWrapper>
+      </CSSTransition>
+      ),
     );
   }
 
@@ -133,7 +145,9 @@ class List extends React.Component {
         >
         </input>
         <ul className="list__items">
-          {this.renderListItems()}
+          <TransitionGroup>
+            {this.renderListItems()}
+          </TransitionGroup>
         </ul>
       </div>
     );
