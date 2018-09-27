@@ -6,12 +6,13 @@
     align-items: center;
     position: absolute;
     background-color: $color-primary;
-    top: 15rem;
+    top: 10rem;
     left: 5rem;
     width: 20rem;
     height: 15rem;
     border-radius: 5px;
     box-shadow: $large-shadow;
+    z-index: 1;
 
     &__text {
         font-size: 2rem;

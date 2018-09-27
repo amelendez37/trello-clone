@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 
 import CreateBoardOrList from '../../createBoardOrList/createBoardOrList.jsx';
 
@@ -35,15 +36,22 @@ class SidebarRight extends React.Component {
       <div className="inner__sidebar--2">
         {this.props.view === 'lists' ? this.renderAddButton('Add list') : this.renderAddButton('Add board')}
 
-        {this.state.addButtonClicked
-          ? <CreateBoardOrList
-             handleCloseButtonClick={this.handleCloseButtonClick}
-             addList={this.props.addList}
-             addBoard={this.props.addBoard}
-             groupName={this.props.groupName}
-             boardId={this.props.selectedBoard ? this.props.selectedBoard._id : null}
-             buttonText={this.props.view === 'lists' ? 'Add list' : 'Add board'}
-            /> : null}
+        <CSSTransition
+          in={this.state.addButtonClicked}
+          timeout={200}
+          classNames="expand"
+          unmountOnExit
+        >
+          <CreateBoardOrList
+            key={'createBoardOrList'}
+            handleCloseButtonClick={this.handleCloseButtonClick}
+            addList={this.props.addList}
+            addBoard={this.props.addBoard}
+            groupName={this.props.groupName}
+            boardId={this.props.selectedBoard ? this.props.selectedBoard._id : null}
+            buttonText={this.props.view === 'lists' ? 'Add list' : 'Add board'}
+          />
+        </CSSTransition>
       </div>
     );
   }
