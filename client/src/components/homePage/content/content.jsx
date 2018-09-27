@@ -1,43 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Board from '../../board/board.jsx';
 import List from '../../list/list.jsx';
+import TransitionWrapper from '../../transitionWrapper/transitionWrapper.jsx';
+import '../homePage.scss';
 
 const Content = (props) => {
   const renderBoards = () => (
     props.boards.map(
-      (board, i) => <Board
-                     key={board._id}
-                     boardId={board._id}
-                     boardName={board.boardName}
-                     lists={board.lists}
-                     groupName={props.groupName}
-                     handleBoardClick={props.handleBoardClick}
-                     index={i}
-                     moveBoard={props.moveBoard}
-                     deleteBoardFromState={props.deleteBoardFromState}
-                    />,
+      ({ _id, boardName, lists }, i) => (
+        <CSSTransition
+          key={_id}
+          timeout={150}
+          classNames="card-animate"
+        >
+          <TransitionWrapper>
+            <Board
+              key={_id}
+              boardId={_id}
+              boardName={boardName}
+              lists={lists}
+              groupName={props.groupName}
+              handleBoardClick={props.handleBoardClick}
+              index={i}
+              moveBoard={props.moveBoard}
+              deleteBoardFromState={props.deleteBoardFromState}
+            />
+          </TransitionWrapper>
+        </CSSTransition>
+      ),
     )
   );
 
   const renderLists = () => (
     props.selectedBoard.lists.map(
-      list => <List
-               key={list._id}
-               groupName={props.groupName}
-               boardId={props.selectedBoard._id}
-               listId={list._id}
-               listName={list.listName}
-               listItems={list.listItems}
-               deleteListFromState={props.deleteListFromState}
-              />,
+      ({ _id, listName, listItems }) => (
+        <CSSTransition
+          key={_id}
+          timeout={150}
+          classNames="card-animate"
+        >
+          <List
+            key={_id}
+            groupName={props.groupName}
+            boardId={props.selectedBoard._id}
+            listId={_id}
+            listName={listName}
+            listItems={listItems}
+            deleteListFromState={props.deleteListFromState}
+          />
+        </CSSTransition>
+      ),
     )
   );
 
   return (
     <ul className="inner__list">
-      {props.view === 'lists' ? renderLists() : renderBoards()}
+      <TransitionGroup>
+        {props.view === 'lists' ? renderLists() : renderBoards()}
+      </TransitionGroup>
     </ul>
   );
 };

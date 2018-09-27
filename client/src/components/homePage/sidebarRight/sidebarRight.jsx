@@ -38,7 +38,7 @@ class SidebarRight extends React.Component {
 
         <CSSTransition
           in={this.state.addButtonClicked}
-          timeout={200}
+          timeout={150}
           classNames="expand"
           unmountOnExit
         >
