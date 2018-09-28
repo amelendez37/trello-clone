@@ -3,8 +3,8 @@
 .board {
     display: inline-block;
     background-color: #fff;
-    margin: 3rem 0 -1.5rem 3rem;
-    width: 25rem;
+    margin: 5.5%;
+    width: 95%;
     text-align: center;
     border-radius: 5px;
     box-shadow: $tiny-shadow;
@@ -34,4 +34,9 @@
     &:hover {
         background-color: $color-light-blue;
     }
+
+    @media screen and (max-width: 70.6em) {
+        // width: 37rem;
+    }
 }
+
