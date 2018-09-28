@@ -25,6 +25,10 @@
     &__delete {
         position: absolute;
         fill: $color-light-red;
+
+        &:hover {
+            fill: $color-lightest-red;
+        }
     }
 
     &:hover {

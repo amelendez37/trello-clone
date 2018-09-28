@@ -57,17 +57,17 @@
 
     &__name {
         position: absolute;
-        top: 60%;
+        top: 90%;
         left: 3%;
-        font-size: 15rem;
+        font-size: 3rem;
         font-weight: 700;
-        color: rgba(0, 0, 0, .01);
-        text-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+        color: rgba(0, 0, 0, .2);
+        // text-shadow: 1px 1px 10px rgba(0,0,0,0.1);
         z-index: -1;
     }
 
     @media screen and (max-height: 30em) {
-        &__name { display: none; }
+        &__name { top: 85% }
         &__title { margin: -3rem 0 4rem 0; }
     }
 
@@ -80,8 +80,15 @@
         &__input { margin-bottom: 2.5rem; }
     }
 
+    @media screen and (max-width: 23.25em) {
+        &__title {
+            font-size: 2rem;
+            margin: -2rem 0 2rem 0;
+        }
+    }
+
     @media screen and (max-width: 61.25em) {
-        &__name { display: none; }
+        // &__name { display: none; }
     }
 }
 
