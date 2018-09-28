@@ -35,8 +35,8 @@
         background-color: $color-light-blue;
     }
 
-    @media screen and (max-width: 70.6em) {
-        // width: 37rem;
+    @media only screen and (min-width: 120em) {
+        font-size: 2rem;
     }
 }
 

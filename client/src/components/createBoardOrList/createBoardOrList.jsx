@@ -10,6 +10,7 @@ class CreateBoardOrList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { title: '' };
+    this.inputRef = React.createRef();
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddBoardClick = this.handleAddBoardClick.bind(this);
@@ -21,6 +22,9 @@ class CreateBoardOrList extends React.Component {
   }
 
   async handleAddBoardClick() {
+    // clear input field
+    this.inputRef.current.value = '';
+
     if (this.state.title) {
       const res = await axios.post(`${process.env.API_URL}/api/board`, {
         groupName: this.props.groupName,
@@ -32,6 +36,8 @@ class CreateBoardOrList extends React.Component {
   }
 
   async handleAddListClick() {
+    this.inputRef.current.value = '';
+
     if (this.state.title) {
       const res = await axios.post(`${process.env.API_URL}/api/list`, {
         groupName: this.props.groupName,
@@ -47,7 +53,7 @@ class CreateBoardOrList extends React.Component {
     return (
       <div className="create">
         <h3 className="create__text">{this.props.buttonText}</h3>
-        <input className="create__input" onChange={this.handleInputChange}></input>
+        <input className="create__input" ref={this.inputRef} onChange={this.handleInputChange}></input>
         <div className="create__close" onClick={this.props.handleCloseButtonClick}>
           <Cross width={25} height={25}/>
         </div>

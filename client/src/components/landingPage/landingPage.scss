@@ -10,6 +10,10 @@
         letter-spacing: .1rem;
         word-spacing: .2rem;
         font-weight: 700;
+
+        @media only screen and (min-width: 120em) {
+            font-size: 4.5rem;
+        }
     }
 
     &__input {
@@ -27,6 +31,16 @@
         &:focus {
             outline: 0;
             width: 25rem;
+        }
+
+        @media only screen and (min-width: 120em) {
+            width: 18rem;
+            font-size: 3rem;
+
+            &:focus {
+                outline: 0;
+                width: 28rem;
+            }
         }
     }
 
@@ -53,6 +67,13 @@
         &--new:hover {
             background-color: $color-secondary;
         }
+
+        @media only screen and (min-width: 120em) {
+            font-size: 2rem;
+            width: 15rem;
+            height: 4.5rem;
+            padding: .5rem;
+        }
     }
 
     &__name {
@@ -62,8 +83,10 @@
         font-size: 3rem;
         font-weight: 700;
         color: rgba(0, 0, 0, .2);
-        // text-shadow: 1px 1px 10px rgba(0,0,0,0.1);
-        z-index: -1;
+
+        @media only screen and (min-width: 120em) {
+            font-size: 4rem;
+        }
     }
 
     @media screen and (max-height: 30em) {
@@ -85,10 +108,6 @@
             font-size: 2rem;
             margin: -2rem 0 2rem 0;
         }
-    }
-
-    @media screen and (max-width: 61.25em) {
-        // &__name { display: none; }
     }
 }
 
