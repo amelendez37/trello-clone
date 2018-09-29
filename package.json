@@ -4,10 +4,11 @@
     "description": "Track projects and tasks",
     "main": "index.js",
     "scripts": {
-        "start": "npm-run-all build start:server",
+        "start": "NODE_ENV=production npm-run-all build start:server",
         "build": "cd client && webpack",
         "build:dev": "cd client && webpack --watch --mode=development",
-        "start:server": "nodemon index.js",
+        "start:server:dev": "nodemon index.js",
+        "start:server": "node index.js",
         "posttest": "eslint --ignore-path .gitignore .",
         "test:client": "jest ./client/src/components",
         "test:server": "jest ./server_components --runInBand --forceExit --detectOpenHandles",
