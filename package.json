@@ -12,7 +12,8 @@
         "posttest": "eslint --ignore-path .gitignore .",
         "test:client": "jest ./client/src/components",
         "test:server": "jest ./server_components --runInBand --forceExit --detectOpenHandles",
-        "test": "npm run test:client && npm run test:server"
+        "test": "npm run test:client && npm run test:server",
+        "heroku-postbuild": "cd client && npm install"
     },
     "engines": {
         "node": "8.11.1"
