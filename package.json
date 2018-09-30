@@ -13,7 +13,7 @@
         "test:client": "jest ./client/src/components",
         "test:server": "jest ./server_components --runInBand --forceExit --detectOpenHandles",
         "test": "npm run test:client && npm run test:server",
-        "heroku-prebuild": "cd client && npm install"
+        "postinstall": "npm install && npm install --prefix client"
     },
     "engines": {
         "node": "8.11.1"
