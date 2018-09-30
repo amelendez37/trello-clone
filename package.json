@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "NODE_ENV=production npm-run-all build start:server",
+        "heroku-postbuild": "webpack -p",
         "build": "cd client && webpack",
         "build:dev": "cd client && webpack --watch --mode=development",
         "start:server:dev": "nodemon index.js",
