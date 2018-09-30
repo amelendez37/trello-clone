@@ -5,7 +5,6 @@
     "main": "index.js",
     "scripts": {
         "start": "NODE_ENV=production npm-run-all build start:server",
-        "preinstall": "npm install",
         "build": "cd client && webpack",
         "build:dev": "cd client && webpack --watch --mode=development",
         "start:server:dev": "nodemon index.js",
@@ -14,6 +13,9 @@
         "test:client": "jest ./client/src/components",
         "test:server": "jest ./server_components --runInBand --forceExit --detectOpenHandles",
         "test": "npm run test:client && npm run test:server"
+    },
+    "engines": {
+        "node": "8.11.1"
     },
     "repository": {
         "type": "git",
