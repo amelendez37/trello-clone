@@ -3,7 +3,6 @@
   'NODE_ENV',
   'PORT',
   'MONGO_URL',
-  'MONGO_URL_TEST',
 ].forEach((name) => {
   if (!process.env[name]) {
     throw new Error(`Environment variable ${name} is missing`);
