@@ -12,9 +12,7 @@
 
 module.exports = {
   env: process.env.NODE_ENV,
-  serverPort: Number(process.env.PORT),
+  serverPort: Number(process.env.PORT || 3000),
   mongoUrl: process.env.NODE_ENV !== 'production'
     ? process.env.MONGO_URL_TEST : process.env.MONGO_URL,
-  baseUrl: process.env.NODE_ENV !== 'production'
-    ? `http://localhost:${process.env.PORT}` : `${process.env.BASE_URL}:${process.env.PORT}`,
 };

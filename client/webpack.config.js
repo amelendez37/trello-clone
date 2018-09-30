@@ -39,7 +39,7 @@ module.exports = () => {
     },
     plugins: [new webpack.DefinePlugin({
       'process.env': {
-        API_URL: JSON.stringify(env.API_URL),
+        API_URL: JSON.stringify(env.NODE_ENV === 'production' ? env.API_URL_PROD : env.API_URL_DEV),
       },
     })],
   };
