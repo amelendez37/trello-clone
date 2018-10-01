@@ -1,6 +1,6 @@
 const webpack = require('webpack');
-const { resolve } = require('path');
 const dotenv = require('dotenv');
+const { resolve } = require('path');
 
 module.exports = () => {
   const env = dotenv.config().parsed;

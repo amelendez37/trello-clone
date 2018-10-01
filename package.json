@@ -6,7 +6,7 @@
     "scripts": {
         "start": "NODE_ENV=production npm-run-all build start:server",
         "build": "webpack",
-        "build:dev": "cd client && webpack --watch --mode=development",
+        "build:dev": "webpack --watch --mode=development",
         "start:server:dev": "nodemon index.js",
         "start:server": "node index.js",
         "posttest": "eslint --ignore-path .gitignore .",
