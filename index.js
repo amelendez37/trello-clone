@@ -29,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, './client/public')));
 app.use('/api', routes);
 
+// wildcard
+app.use('*', (req, res) => res.redirect('/'));
+
 const server = app.listen(port, () => logger.info(`Listening on port ${port}`));
 
 module.exports = { server, db };
