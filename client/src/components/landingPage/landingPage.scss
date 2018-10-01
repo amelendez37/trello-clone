@@ -21,7 +21,7 @@
         border: 1px solid $color-medium-grey;
         width: 14%;
         height: 6%;
-        font-size: 2rem;
+        font-size: 2.5rem;
         text-align: center;;
         padding: .5rem 1rem;
         color: $color-dark-blue;
@@ -43,13 +43,13 @@
     }
 
     &__btn {
-        width: 9rem;
-        height: 3.5rem;
-        border-radius: 13px;
-        font-size: 1.2rem;
+        width: 10rem;
+        height: 4rem;
+        border-radius: 15px;
+        font-size: 1.5rem;
         font-weight: 700;
         cursor: pointer;
-        color: $color-primary;
+        color: #4885F1;
         border: none;
         
         &:focus { outline: 0; }

@@ -6,7 +6,7 @@ import CircleLeft from '../../../../public/img/circle-left.svg';
 const SidebarLeft = props => (
   <div className="inner__sidebar--1">
     <button className="inner__sidebar--1-back-btn" onClick={props.manageView}>
-      <CircleLeft />
+      <CircleLeft width={25} height={25} />
     </button>
   </div>
 );
