@@ -5,7 +5,6 @@
     "main": "index.js",
     "scripts": { 
         "start": "NODE_ENV=production npm-run-all build start:server",
-        "dev": "NODE_ENV=development npm-run-all build start:server:dev",
         "build": "webpack --config webpack.production.js",
         "build:dev": "webpack --config webpack.development.js --watch --mode=development",
         "start:server:dev": "nodemon index.js",

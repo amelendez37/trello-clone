@@ -2,7 +2,6 @@
 @import '../../../public/styles/main.scss';
 
 .inner {
-
     &__title {
         margin: -10rem 0 4rem 0;
         color: #fff;
@@ -20,8 +19,8 @@
         margin-bottom: 4rem;
         border-radius: 13px;
         border: 1px solid $color-medium-grey;
-        width: 15rem;
-        height: 3rem;
+        width: 14%;
+        height: 6%;
         font-size: 2rem;
         text-align: center;;
         padding: .5rem 1rem;
@@ -30,23 +29,22 @@
 
         &:focus {
             outline: 0;
-            width: 25rem;
+            width: 23%;
         }
 
         @media only screen and (min-width: 120em) {
-            width: 18rem;
-            font-size: 3rem;
+            font-size: 3.2rem;
 
             &:focus {
                 outline: 0;
-                width: 28rem;
+                width: 23%;
             }
         }
     }
 
     &__btn {
-        width: 10rem;
-        height: 3rem;
+        width: 9rem;
+        height: 3.5rem;
         border-radius: 13px;
         font-size: 1.2rem;
         font-weight: 700;
@@ -72,8 +70,8 @@
 
         @media only screen and (min-width: 120em) {
             font-size: 2rem;
-            width: 15rem;
-            height: 4.5rem;
+            width: 16rem;
+            height: 5rem;
             padding: .5rem;
         }
     }

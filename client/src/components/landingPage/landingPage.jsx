@@ -76,8 +76,8 @@ class LandingPage extends React.Component {
           <h1 className="inner__title">Enter group name</h1>
           <input className="inner__input" type="text" onChange={this.handleInputChange}/>
           <div>
-            <button className="inner__btn inner__btn--exist" onClick={this.handleExistingClick}>Existing Group</button>
-            <button className="inner__btn inner__btn--new" onClick={this.handleNewClick}>New Group</button>
+            <button className="inner__btn inner__btn--exist" onClick={this.handleExistingClick}>Existing</button>
+            <button className="inner__btn inner__btn--new" onClick={this.handleNewClick}>New</button>
           </div>
           {this.state.groupNameError ? this.renderGroupNameError() : null}
         </div>
