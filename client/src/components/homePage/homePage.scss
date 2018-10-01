@@ -2,7 +2,6 @@
 @import '../../../public/styles/main.scss';
 
 .inner {
-    
     &__boards {
         display: grid;
         grid-template-columns: minmax(2.5rem ,3.5vw) minmax(7.5rem, 9vw) 1fr;
@@ -11,7 +10,6 @@
     }
 
     &__sidebar {
-
         &--1 {
             grid-column: 1 / 2;
             grid-row: 1 / -1;
@@ -84,16 +82,20 @@
 }
 
 .container {
-
     &__groupname {
+        position: relative;
         font-size: 2rem;
         font-weight: 700;
         color: $color-dark-blue;
-        padding: 1rem 0;
+        top: 1%;
         text-align: center;
         word-break: break-all;
         text-shadow: $tiny-shadow;
         letter-spacing: 1px;
+    }
+
+    @media only screen and (min-width: 120em) {
+        top: 2%;
     }
 }
 
