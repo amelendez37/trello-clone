@@ -7,9 +7,9 @@ module.exports = () => {
 
   return {
     mode: 'production',
-    entry: ['@babel/polyfill', './src/index'],
+    entry: ['@babel/polyfill', './client/src/index'],
     output: {
-      path: resolve(__dirname, 'public'),
+      path: resolve(__dirname, './client/public'),
       filename: 'bundle.js',
     },
     module: {
