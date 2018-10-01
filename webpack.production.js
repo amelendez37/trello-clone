@@ -4,7 +4,7 @@ const { resolve } = require('path');
 
 module.exports = () => {
   return {
-    mode: 'development',
+    mode: 'production',
     entry: ['@babel/polyfill', './client/src/index'],
     output: {
       path: resolve(__dirname, './client/public'),
