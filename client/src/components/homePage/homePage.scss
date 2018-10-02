@@ -81,24 +81,6 @@
     }
 }
 
-.container {
-    &__groupname {
-        position: relative;
-        font-size: 2rem;
-        font-weight: 700;
-        color: $color-dark-blue;
-        top: 1%;
-        text-align: center;
-        word-break: break-all;
-        text-shadow: $tiny-shadow;
-        letter-spacing: 1px;
-    }
-
-    @media only screen and (min-width: 120em) {
-        top: 2%;
-    }
-}
-
 // createBoardOrList animations
 .expand-enter {
     transform: scale(0);
