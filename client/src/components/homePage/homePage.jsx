@@ -4,8 +4,7 @@ import axios from 'axios';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import SidebarLeft from './sidebarLeft/sidebarLeft.jsx';
-import SidebarRight from './sidebarRight/sidebarRight.jsx';
+import Sidebar from './sidebar/sidebar.jsx';
 import Content from './content/content.jsx';
 import './homePage.scss';
 
@@ -114,13 +113,13 @@ class HomePage extends React.Component {
       <div className="container">
         <div className="inner">
           <div className="inner__boards">
-            <SidebarLeft manageView={this.manageView} />
-            <SidebarRight
-             groupName={groupName}
-             view={this.state.view}
-             selectedBoard={this.state.selectedBoard}
-             addList={this.addList}
-             addBoard={this.addBoard}
+            <Sidebar
+            groupName={groupName}
+            manageView={this.manageView}
+            view={this.state.view}
+            selectedBoard={this.state.selectedBoard}
+            addList={this.addList}
+            addBoard={this.addBoard}
             />
             <Content
              groupName={groupName}

@@ -59,7 +59,7 @@ class CreateBoardOrList extends React.Component {
         </div>
         <div
         className="create__add"
-        onClick={this.props.buttonText === 'Add board' ? this.handleAddBoardClick : this.handleAddListClick}>
+        onClick={this.props.buttonText === 'board' ? this.handleAddBoardClick : this.handleAddListClick}>
           <SquaredPlus width={30} height={30}/>
         </div>
       </div>

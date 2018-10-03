@@ -15,7 +15,8 @@ html {
 }
 
 .container {
-    background: linear-gradient(to right, $color-gradient-left, $color-gradient-right);
+    // background: linear-gradient(to right, $color-gradient-left, $color-gradient-right);
+    background: $background-color;
     height: 100vh;
     position: relative;
 }
@@ -33,7 +34,6 @@ html {
     transform: translate(-50%, -50%);
     border-radius: 7px;
     background-color: $color-primary;
-    // box-shadow: $subtle-shadow;
     box-shadow: $largest-shadow;
     overflow: hidden;
 }

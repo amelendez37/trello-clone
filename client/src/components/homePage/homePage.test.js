@@ -20,10 +20,9 @@ test('Should render a container div', () => {
   expect(component.find('.container').length).toBe(1);
 });
 
-test('Should render SidebarLeft, SidebarRight and Content sub components', () => {
+test('Should render Sidebar and Content sub components', () => {
   const component = shallow(<HomePageNotDecorated {...props} />);
 
-  expect(component.find('SidebarLeft').length).toBe(1);
-  expect(component.find('SidebarRight').length).toBe(1);
+  expect(component.find('Sidebar').length).toBe(1);
   expect(component.find('Content').length).toBe(1);
 });

@@ -24,18 +24,18 @@ test('Should call handleCloseButtonClick when close button clicked', () => {
   expect(mock).toHaveBeenCalledTimes(1);
 });
 
-test('Should call handleAddBoardClick when buttonText prop is "Add board" and add board button clicked', () => {
+test('Should call handleAddBoardClick when buttonText prop is "board" and add board button clicked', () => {
   const spy = jest.spyOn(CreateBoardOrList.prototype, 'handleAddBoardClick');
-  const allProps = Object.assign({}, props, { buttonText: 'Add board' });
+  const allProps = Object.assign({}, props, { buttonText: 'board' });
   const component = shallow(<CreateBoardOrList {...allProps} />);
   component.find('.create__add').simulate('click');
 
   expect(spy).toHaveBeenCalledTimes(1);
 });
 
-test('Should call handleAddListClick when buttonText prop is "Add list" and add list button clicked', () => {
+test('Should call handleAddListClick when buttonText prop is "list" and add list button clicked', () => {
   const spy = jest.spyOn(CreateBoardOrList.prototype, 'handleAddListClick');
-  const allProps = Object.assign({}, props, { buttonText: 'Add list' });
+  const allProps = Object.assign({}, props, { buttonText: 'list' });
   const component = shallow(<CreateBoardOrList {...allProps} />);
   component.find('.create__add').simulate('click');
 
