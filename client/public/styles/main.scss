@@ -33,6 +33,7 @@ html {
     transform: translate(-50%, -50%);
     border-radius: 7px;
     background-color: $color-primary;
-    box-shadow: $subtle-shadow;
+    // box-shadow: $subtle-shadow;
+    box-shadow: $largest-shadow;
     overflow: hidden;
 }
