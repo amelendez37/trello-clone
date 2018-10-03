@@ -32,6 +32,7 @@ class CreateBoardOrList extends React.Component {
       });
 
       this.props.addBoard(res.data);
+      this.props.handleCloseButtonClick();
     }
   }
 
@@ -46,6 +47,7 @@ class CreateBoardOrList extends React.Component {
       });
 
       this.props.addList(res.data);
+      this.props.handleCloseButtonClick();
     }
   }
 

@@ -34,4 +34,9 @@ html {
     background-color: $color-primary;
     box-shadow: $largest-shadow;
     overflow: hidden;
+
+    @media only screen and (max-width: 26.6em) {
+        width: 100vw;
+        height: 100vh;
+    }
 }
