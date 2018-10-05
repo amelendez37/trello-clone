@@ -73,12 +73,9 @@ class LandingPage extends React.Component {
       <div className="container">
         <div className="inner">
           <p className="inner__name">/taskTracker</p>
-          <h1 className="inner__title">Enter group name</h1>
-          <input className="inner__input" type="text" onChange={this.handleInputChange}/>
-          <div>
-            <button className="inner__btn inner__btn--exist" onClick={this.handleExistingClick}>Existing</button>
-            <button className="inner__btn inner__btn--new" onClick={this.handleNewClick}>New</button>
-          </div>
+          <input className="inner__input" type="text" placeholder="Enter group name" onChange={this.handleInputChange}/>
+          <button className="inner__btn inner__btn--exist" onClick={this.handleExistingClick}>Existing</button>
+          <button className="inner__btn inner__btn--new" onClick={this.handleNewClick}>New</button>
           {this.state.groupNameError ? this.renderGroupNameError() : null}
         </div>
       </div>
